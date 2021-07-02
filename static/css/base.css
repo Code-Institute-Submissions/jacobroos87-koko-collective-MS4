@@ -5,17 +5,45 @@ html {
 }
 
 body {
-    background: url('/media/hero.jpg') no-repeat center center fixed;
-    background-size: cover;
     height: calc(100vh - 164px);
-    color: #555;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+}
+
+.hero-img {
+    background: url('/media/hero.jpg') no-repeat center center;
+    background-size: cover;
 }
 
 #logo-img {
     height: 100px;
     margin-bottom: 5px;
+}
+
+.desc-col {
+    padding: 25px;
+}
+
+.desc-header {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.desc-text {
+    font-size: 28px;
+}
+
+.key-points i {
+    font-size: 48px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.key-points-div {
+    padding: 35px 0px;
+    background-color: #E3C0D3;
 }
 
 .brand-description {

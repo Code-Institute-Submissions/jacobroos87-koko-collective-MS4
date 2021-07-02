@@ -46,6 +46,14 @@ body {
     background-color: #E3C0D3;
 }
 
+.testimonials {
+    background-color: #077187;
+}
+
+.carousel-item {
+    color: white;
+}
+
 .brand-description {
     background-color: #077187;
     margin: auto;

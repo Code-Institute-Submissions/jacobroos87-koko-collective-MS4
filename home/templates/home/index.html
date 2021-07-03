@@ -20,7 +20,8 @@
             </div>
             <div class="my-5">
                 <h4>
-                    <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
+                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop
+                        Now</a>
                 </h4>
             </div>
         </div>
@@ -39,7 +40,8 @@
             </p>
             <div class="my-5">
                 <h4>
-                    <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
+                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop
+                        Now</a>
                 </h4>
             </div>
         </div>
@@ -73,65 +75,100 @@
 <div class="container-fluid testimonials">
     <div class="carousel-fade p-5" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active text-center m-5">
-              <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks simply adorable!</h3>
-              <p>Jessie - Oxford, UK</p>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-item active text-center">
-                <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks simply adorable!</h3>
+            <div class="carousel-item active text-center m-5">
+                <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks
+                    simply adorable!</h3>
                 <p>Jessie - Oxford, UK</p>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-item active text-center">
-                <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks simply adorable!</h3>
-                <p>Jessie - Oxford, UK</p>
-            </div>
-          </div>
-        </div>
-      </div>
-</div>
-<div class="row">
-    {% for product in products %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0">
-                {% if product.image %}
-                <a href="{% url 'product_detail' product.id %}">
-                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                </a>
-                {% endif %}
-                <div class="card-body pb-0">
-                    <p class="mb-0">{{ product.name }}</p>
+            <div class="carousel-item">
+                <div class="carousel-item active text-center">
+                    <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks
+                        simply adorable!</h3>
+                    <p>Jessie - Oxford, UK</p>
                 </div>
-                <div class="card-footer bg-white pt-0 border-0 text-left">
-                    <div class="row">
-                        <div class="col">
-                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                            {% if product.category %}
-                            <p class="small mt-1 mb-0">
-                                <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                    <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
-                                </a>
-                            </p>
-                            {% endif %}
-                            {% if product.rating %}
-                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                            {% else %}
-                                <small class="text-muted">No Rating</small>
-                            {% endif %}
-                            {% if request.user.is_superuser %}
-                                <small class="ml-3">
-                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                                </small>
-                            {% endif %}
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item active text-center">
+                    <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks
+                        simply adorable!</h3>
+                    <p>Jessie - Oxford, UK</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col text-center mt-3">
+            <h2 class="m-4">SHOP THE NEW COLLECTION</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="product-container col-8 offset-2">
+            <div class="row mt-1 mb-2"></div>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 border-0">
+                        {% for image in product.images.all %}
+                        {% if image.default %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                        <div class="card-body pb-0">
+                            <p class="mb-0">{{ product.name }}</p>
+                        </div>
+                        <div class="card-footer bg-white pt-0 border-0 text-left">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                                    {% if product.rating %}
+                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} /
+                                        5</small>
+                                    {% else %}
+                                    <small class="text-muted">No Rating</small>
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {% if forloop.counter|divisibleby:1 %}
+                <div class="col-12 d-sm-none mb-5">
+                    <hr>
+                </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:2 %}
+                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                    <hr>
+                </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:3 %}
+                <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                    <hr>
+                </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:3 %}
+                <div class="col-12 d-none d-xl-block mb-5">
+                    <hr>
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
-    {% endfor %}
-</div>  
+    </div>
+    <div class="row">
+        <div class="col-12 my-auto text-center my-5">
+            <h4>
+                <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">View
+                    All</a>
+            </h4>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}

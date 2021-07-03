@@ -77,6 +77,15 @@ body {
     min-width: 260px;
 }
 
+.banner-card-buttons {
+    background: #FAB561;
+    color: white;
+    min-width: 260px;
+    position: absolute;
+    bottom: 5px;
+    left: 22%;
+}
+
 .btn-black {
     background: black;
     color: white;
@@ -105,10 +114,25 @@ body {
     width: 100%;
 }
 
+.banner-links {
+    background-color: #E3C0D3;
+}
+
 .delivery-banner p {
     margin: 0.5rem 0;
 }
 
+.card-banner-item {
+    padding: 25px 25px;
+}
+
+.card {
+    background-color: unset;
+}
+
+.card-footer {
+    background-color: unset;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

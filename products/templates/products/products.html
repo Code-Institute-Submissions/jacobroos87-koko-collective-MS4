@@ -14,13 +14,29 @@
 
 
 <div class="container-fluid">
+
     <div class="row ">
         <div class="col text-center mt-3">
             <h2 class="logo-font">Products</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-4 mx-auto">
+        <div class="col-md-1 col-xs-4 mx-auto">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-black rounded-0 type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Lowest Price</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Highest Price</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=desc">Rating</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=category&direction=asc">Category</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-8 mx-auto">
             <form method="GET" action="{% url 'products' %}">
                 <div class="input-group w-100">
                     <input class="form-control border border-black rounded-0" type="text" name="q"
@@ -36,6 +52,7 @@
             </form>
         </div>
     </div>
+
     <hr class="w-50 mb-1">
     <div class="row">
         <div class="product-container col-8 offset-2">

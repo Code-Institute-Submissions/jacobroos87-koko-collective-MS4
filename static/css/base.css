@@ -84,13 +84,13 @@ body {
 .shop-now-button {
     background: #FAB561;
     color: white;
-    min-width: 260px;
+    max-width: 260px;
 }
 
 .banner-card-buttons {
     background: #FAB561;
     color: white;
-    min-width: 260px;
+    max-width: 260px;
     position: absolute;
     bottom: 5px;
     left: 25%;

@@ -87,6 +87,23 @@ body {
     right: 25%;
 }
 
+.handmade-button {
+    background: #077187;
+    color: white;
+    min-width: 260px;
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+}
+
+.handmade-text {
+    font-size: 48px;
+    color: white;
+    position: absolute;
+    bottom: 22%;
+    right: 5%;
+}   
+
 .btn-black {
     background: black;
     color: white;

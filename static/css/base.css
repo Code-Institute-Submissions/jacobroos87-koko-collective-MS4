@@ -5,14 +5,24 @@ html {
 }
 
 body {
-    height: calc(100vh - 164px);
+    position: relative;
+    min-height: calc(100vh - 164px);
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+}
+
+#page-container {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 120px;
 }
 
 .hero-img {
     background: url('/media/hero.jpg') no-repeat center center;
     background-size: cover;
+    height: 100vh !important;
 }
 
 #logo-img {
@@ -155,10 +165,10 @@ body {
 /*------ Footer -----*/
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
-    left: 0px;
-    right: 0px;
+    width: 100%;
+    min-height: 120px;
 }
 
 .page-footer {

@@ -186,10 +186,29 @@ footer ul li{
     color: #000;
 }
   
-  .social-links li i:hover {
-      transition: 0.2s ease-in-out;
-      color: #fff;
-  }
+.social-links li i:hover {
+    transition: 0.2s ease-in-out;
+    color: #fff;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

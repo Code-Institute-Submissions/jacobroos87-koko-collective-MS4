@@ -151,6 +151,28 @@ body {
 .card-footer {
     background-color: unset;
 }
+
+/*------ Footer -----*/
+
+.page-footer {
+    background-color: #FAB561;
+}
+
+footer ul li{
+    display: inline;
+    font-size: 35px;
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+
+.social-links li i {
+    color: #000;
+}
+  
+  .social-links li i:hover {
+      transition: 0.2s ease-in-out;
+      color: #fff;
+  }
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

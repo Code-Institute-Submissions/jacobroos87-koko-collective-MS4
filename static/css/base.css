@@ -154,6 +154,13 @@ body {
 
 /*------ Footer -----*/
 
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
 .page-footer {
     background-color: #FAB561;
 }

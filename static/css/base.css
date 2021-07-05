@@ -65,9 +65,9 @@ body {
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
-    font-size: 28px;
+    height: 1.3rem;
+    width: 1.3rem;
+    font-size: 18px;
     color: black !important;
 }
 
@@ -105,7 +105,7 @@ body {
 }   
 
 .btn-black {
-    background: black;
+    background: #FAB561;
     color: white;
 }
 

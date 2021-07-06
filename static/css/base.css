@@ -197,6 +197,7 @@ footer ul li{
     position: fixed;
     bottom: 10px;
     right: 10px;
+    z-index: 1000;
 }
 
 a.category-badge > span.badge:hover {

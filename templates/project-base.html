@@ -54,8 +54,51 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 my-auto">
-                    <nav class="navbar navbar-fixed-top">
+                <div class="col-6 col-md-4 text-center order-md-2 order-sm-1">
+                    <a href="{% url 'home' %}" class="nav-link">
+                        <img id="logo-img" src="{% static '../media/logo.png' %}" alt="KOKO Collective Logo">
+                    </a>
+                </div>
+                <div class="col-3 offset-3 offset-md-0 col-md-4 my-auto order-md-1 order-sm-3">
+                    <div id="menuArea">
+                        <input type="checkbox" id="menuToggle"></input>
+                        <label for="menuToggle" class="menuOpen">
+                            <div class="open"></div>
+                        </label>
+
+                        <div class="menu menuEffects">
+                            <label for="menuToggle"></label>
+                            <nav class="menuContent navbar">
+                                <ul class="navbar-nav">
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="{% url 'products' %}" id="main-shop"
+                                            data-toggle="dropdown">
+                                            Shop
+                                        </a>
+                                        <ul class="dropdown-menu  border-0" aria-labelledby="main-shop">
+                                            <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{% url 'products' %}?category=dog_collars">Dog
+                                                    Collars</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'products' %}?category=dog_leads">Dog
+                                                    Leads</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{% url 'products' %}?category=dog_bandanas">Dog
+                                                    Bandanas</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{% url 'products' %}?category=wb_dispensers">Waste Bag
+                                                    Dispensers</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a href="#contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- <nav class="navbar navbar-fixed-top">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggler toggler-example" data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -90,14 +133,9 @@
                                 <li class="nav-item"><a href="#contact">Contact</a></li>
                             </ul>
                         </div>
-                    </nav>
+                    </nav> -->
                 </div>
-                <div class="col-sm-4 my-auto text-center">
-                    <a href="{% url 'home' %}" class="nav-link">
-                        <img id="logo-img" src="{% static '../media/logo.png' %}" alt="KOKO Collective Logo">
-                    </a>
-                </div>
-                <div class="col-sm-4 my-auto py-1 py-lg-0">
+                <div class="col-12 col-md-4 my-auto py-1 py-lg-0 order-3" id="secondary-menu">
                     <ul class="list-inline text-center text-lg-right my-0">
                         <li class="list-inline-item dropdown">
                             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
@@ -113,6 +151,8 @@
                                 <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                <a href="#" class="dropdown-item">Wishlist</a>
+
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                 {% else %}
                                 <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -145,17 +185,17 @@
         {% if messages %}
         <div class="message-container">
             {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
+            {% with message.level as level %}
+            {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html' %}
+            {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html' %}
+            {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html' %}
+            {% else %}
+            {% include 'includes/toasts/toast_info.html' %}
+            {% endif %}
+            {% endwith %}
             {% endfor %}
         </div>
         {% endif %}
@@ -199,6 +239,9 @@
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
+        $(".open").on('click', function () {
+            $("#secondary-menu .list-inline-item .text-center, .icon").css('color', 'white')
+        });
     </script>
     {% endblock %}
 

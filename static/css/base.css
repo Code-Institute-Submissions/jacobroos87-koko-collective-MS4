@@ -37,6 +37,10 @@ body {
     left: 10%;
 }
 
+.dropdown-menu.show {
+    border-radius: 0;
+}
+
 #secondary-menu > ul > li.list-inline-item.dropdown.show > div {
     transform: translate3d(-25px, 56px, 0px) !important;
 }
@@ -371,7 +375,8 @@ i.fa-bars.icon {
 
 footer {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
+    left: 0;
     width: 100%;
     min-height: 120px;
 }
@@ -653,6 +658,10 @@ a.category-badge>span.badge:hover {
 .allauth-form-inner-content a {
     color: #17a2b8;
     /* text-info */
+}
+
+.carousel-indicators {
+    bottom: -50px;
 }
 
 .carousel-indicators li {

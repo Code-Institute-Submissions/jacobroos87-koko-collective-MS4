@@ -24,8 +24,9 @@ class Product(models.Model):
     description = models.TextField()
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True,
-                                 blank=True)
+    avg_rating = models.DecimalField('average rating', max_digits=2,
+                                     decimal_places=1, default=0,
+                                     null=True, blank=True)
     is_featured = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):

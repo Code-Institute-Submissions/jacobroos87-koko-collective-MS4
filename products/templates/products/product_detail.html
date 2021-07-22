@@ -14,14 +14,29 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-            <div class="image-container my-5">
-                {% for image in product.images.all %}
-                    {% if image.default %}
-                    <a href="{{ image.image.url }}">
-                        <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ product.name }}">
-                    </a>
-                    {% endif %}
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                
+                <div class="carousel-inner">
+                {% for image in product.images.all %}    
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <img class="d-block w-100" src="{{ image.image.url }}"
+                            alt="First slide">
+                    </div>
                 {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -41,10 +56,10 @@
                 <small class="text-muted">No Rating</small>
                 {% endif %}
                 {% if request.user.is_superuser %}
-                    <small class="ml-3">
-                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                    </small>
+                <small class="ml-3">
+                    <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                </small>
                 {% endif %}
                 <p class="mt-3">{{ product.description | safe | linebreaks }}</p>
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">

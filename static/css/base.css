@@ -11,6 +11,9 @@ body {
     font-weight: 100;
 }
 
+.dropdown-menu a:active {
+    background-color: white !important;
+}
 
 #page-container {
     min-height: 100vh;
@@ -26,9 +29,20 @@ body {
     display: none;
 }
 
+
+
 .dropdown-menu {
-    background: rgba(255, 135, 2, 0.9);
+    background: #FAB561;
     text-align: center;
+    left: 10%;
+}
+
+#secondary-menu > ul > li.list-inline-item.dropdown.show > div {
+    transform: translate3d(-25px, 56px, 0px) !important;
+}
+
+.dropdown-item {
+    font-weight: 200;
 }
 
 .open {
@@ -41,9 +55,9 @@ body {
     position: relative;
     top: 8px;
     transition: all 0.3s ease;
-  }
-  
-  .open:before {
+}
+
+.open:before {
     content: "";
     background-color: #3c3c3c;
     width: 26px;
@@ -54,9 +68,9 @@ body {
     top: -8px;
     transform: rotate(0deg);
     transition: all 0.3s ease;
-  }
-  
-  .open:after {
+}
+
+.open:after {
     content: "";
     background-color: #3c3c3c;
     width: 26px;
@@ -67,38 +81,47 @@ body {
     top: 4px;
     transform: rotate(0deg);
     transition: all 0.3s ease;
-  }
-  
-  .menuOpen {
+}
+
+.menuOpen {
     width: 24px;
     display: block;
     padding: 25px;
     cursor: pointer;
     float: left;
-  }
+}
 
-  .menuOpen:hover .open {
-      width: 32px;
-  }
-  
-  .menuOpen:hover .open:before {
+.menuOpen:hover .open {
     width: 32px;
-  }
-  
-  .menuOpen:hover .open:after {
+}
+
+.menuOpen:hover .open:before {
     width: 32px;
-  }
-  
-  .menu {
+}
+
+.menuOpen:hover .open:after {
+    width: 32px;
+}
+
+.menu {
     position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
-    background: rgba(255, 135, 2, 1);
-  }
-  
-  .menu label {
+    overflow-y: scroll;
+    background: #FAB561;
+}
+
+.menu-icon p {
+    font-size: 20px;
+}
+
+.menu-icon i {
+    font-size: 24px;
+}
+
+.menu label {
     width: 30px;
     height: 30px;
     position: absolute;
@@ -106,25 +129,26 @@ body {
     top: 20px;
     background-size: 100%;
     cursor: pointer;
-  }
-  
-  .menu .menuContent {
+}
+
+.menu .menuContent {
     position: relative;
-    top: 45%;
+    top: 35%;
     font-size: 54px;
     text-align: center;
     padding-bottom: 20px;
     margin-top: -170px;
-  }
+    overflow-y: visible;
+}
 
-  
-  .menu ul {
+
+.menu ul {
     list-style: none;
     padding: 0;
     margin: 0 auto;
-  }
-  
-  .menu ul li a {
+}
+
+.menu ul li a {
     display: block;
     color: white;
     text-decoration: none;
@@ -132,44 +156,44 @@ body {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     padding: 10px 10px;
-  }
-  
+}
+
 .menu ul li a:hover {
     transition: ease-in-out 0.2s;
     transform: scale(1.1);
 
 }
-  
+
 /* .menu ul li:hover {
     background: white;
 } */
-  
-  .menuEffects {
+
+.menuEffects {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s, visibility 0.5s;
-  }
-  
-  /* .menuEffects ul {
+}
+
+/* .menuEffects ul {
     transform: translateY(0%);
     transition: all 0.5s;
   } */
-  
-  #menuToggle:checked ~ .menuEffects {
+
+#menuToggle:checked~.menuEffects {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s;
-  }
-  
-  #menuToggle:checked ~ .menuEffects ul {
+}
+
+#menuToggle:checked~.menuEffects ul {
     opacity: 1;
-  }
-  
-  #menuToggle:checked ~ .menuOpen .open {
+}
+
+#menuToggle:checked~.menuOpen .open {
     background-color: transparent;
-  }
-  
-  #menuToggle:checked ~ .menuOpen .open:before {
+}
+
+#menuToggle:checked~.menuOpen .open:before {
     content: "";
     background-color: white;
     transform: rotate(45deg);
@@ -177,9 +201,9 @@ body {
     top: 0;
     right: 0;
     z-index: 1;
-  }
-  
-  #menuToggle:checked ~ .menuOpen .open:after {
+}
+
+#menuToggle:checked~.menuOpen .open:after {
     content: "";
     background-color: white;
     transform: rotate(-45deg);
@@ -187,17 +211,18 @@ body {
     top: 0;
     right: 0;
     z-index: 1;
-  }
-  
-  #menuToggle:not(:checked) ~ .menuEffects ul {
+}
+
+#menuToggle:not(:checked)~.menuEffects ul {
     transform: translateY(-30%);
-  }
+}
 
 .hero-img {
     background: url('/media/hero.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh !important;
 }
+
 
 #logo-img {
     height: 100px;
@@ -292,7 +317,7 @@ i.fa-bars.icon {
     position: absolute;
     bottom: 22%;
     right: 5%;
-}   
+}
 
 .btn-black {
     background: #FAB561;
@@ -310,7 +335,7 @@ i.fa-bars.icon {
 }
 
 .text-black {
-    color: #000;
+    color: #000 !important;
 }
 
 .border-black {
@@ -355,17 +380,17 @@ footer {
     background-color: #FAB561;
 }
 
-footer ul li{
+footer ul li {
     display: inline;
     font-size: 35px;
     margin-right: 10px;
     margin-left: 5px;
-  }
+}
 
 .social-links li i {
     color: #000;
 }
-  
+
 .social-links li i:hover {
     transition: 0.2s ease-in-out;
     color: #fff;
@@ -386,7 +411,7 @@ footer ul li{
     border: 1px solid black;
 }
 
-a.category-badge > span.badge:hover {
+a.category-badge>span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
 }
@@ -416,10 +441,10 @@ a.category-badge > span.badge:hover {
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 4px solid transparent;
-    border-right: 4px solid transparent; 
+    border-right: 4px solid transparent;
     border-bottom: 10px solid black;
     position: absolute;
     top: -10px;
@@ -497,9 +522,9 @@ a.category-badge > span.badge:hover {
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
+    .container {
+        max-width: 80%;
+    }
 }
 
 @media (max-width: 991px) {
@@ -543,7 +568,8 @@ a.category-badge > span.badge:hover {
         font-size: .75rem;
     }
 
-    .increment-qty, .decrement-qty {
+    .increment-qty,
+    .decrement-qty {
         padding: .25rem .5rem !important;
     }
 
@@ -562,11 +588,23 @@ a.category-badge > span.badge:hover {
     }
 }
 
+@media (max-width: 320px) {
+    #page-container {
+        padding-top: 60px;
+    }
+
+    .delivery-banner p {
+        font-size: 14px;
+    }
+}
+
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {
-    margin-top: 1.5rem; /* mt-4 */
-    color: #6c757d; /* text-secondary */
+    margin-top: 1.5rem;
+    /* mt-4 */
+    color: #6c757d;
+    /* text-secondary */
 }
 
 .allauth-form-inner-content input {
@@ -584,8 +622,8 @@ a.category-badge > span.badge:hover {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* btn */
-	display: inline-block;
+    /* btn */
+    display: inline-block;
     font-weight: 400;
     color: #fff;
     text-align: center;
@@ -602,16 +640,26 @@ a.category-badge > span.badge:hover {
     border-radius: 0;
 
     /* standard bootstrap btn transitions */
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
-	color: #fff;
+.allauth-form-inner-content input[type='submit']:hover {
+    color: #fff;
     background-color: #222;
     border-color: #222;
 }
 
 .allauth-form-inner-content a {
-	color: #17a2b8; /* text-info */
+    color: #17a2b8;
+    /* text-info */
+}
+
+.carousel-indicators li {
+    background-color: black;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none;
 }

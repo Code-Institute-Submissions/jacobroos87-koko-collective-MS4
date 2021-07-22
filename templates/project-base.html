@@ -65,9 +65,10 @@
                         <label for="menuToggle" class="menuOpen">
                             <div class="open"></div>
                         </label>
-
+                        
                         <div class="menu menuEffects">
                             <label for="menuToggle"></label>
+
                             <nav class="menuContent navbar">
                                 <ul class="navbar-nav">
                                     <li><a href="{% url 'home' %}">Home</a></li>
@@ -94,6 +95,46 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item"><a href="#contact">Contact</a></li>
+                                </ul>
+                                <ul class="list-inline my-0 col-12">
+                                    <li class="list-inline-item dropdown">
+                                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <div class="text-center menu-icon">
+                                                <div><i class="fas fa-user"></i></div>
+                                                <p class="my-0">My Account</p>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                            {% if request.user.is_authenticated %}
+                                            {% if request.user.is_superuser %}
+                                            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                                            {% endif %}
+                                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                            <a href="#" class="dropdown-item">Wishlist</a>
+            
+                                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                            {% else %}
+                                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                                            href="{% url 'view_bag' %}">
+                                            <div class="text-center menu-icon">
+                                                <div><i class="fas fa-shopping-bag"></i></div>
+                                                <p class="my-0">
+                                                    {% if grand_total %}
+                                                    £{{ grand_total|floatformat:2 }}
+                                                    {% else %}
+                                                    $0.00
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -239,8 +280,8 @@
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
-        $(".open").on('click', function () {
-            $("#secondary-menu .list-inline-item .text-center, .icon").css('color', 'white')
+        $(".menuOpen").on('click', function () {
+            $("#secondary-menu .list-inline-item .text-center, .icon").toggle()
         });
     </script>
     {% endblock %}

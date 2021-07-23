@@ -3,6 +3,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from reviews.models import Reviews
+from reviews.forms import ReviewForm
+from profiles.models import UserProfile
 
 from .models import Product, Category
 from .forms import ProductForm
@@ -12,7 +15,7 @@ from .forms import ProductForm
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
-
+    
     products = Product.objects.all()
     query = None
     categories = None
@@ -65,9 +68,27 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    if request.user.is_authenticated:
+        user = UserProfile.objects.get(user=request.user)
+    else:
+        user = None
 
+    reviews = Reviews.objects.filter(product=product)
+
+    try:
+        item_review = Reviews.objects.get(user=user, product=product)
+        edit_review_form = ReviewForm(instance=item_review)
+
+    except Reviews.DoesNotExist:
+        edit_review_form = None
+
+    review_form = ReviewForm()
     context = {
         'product': product,
+        'reviews': reviews,
+        'review_form': review_form,
+        'edit_review_form': edit_review_form,
+
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -79,7 +100,7 @@ def add_product(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -90,7 +111,7 @@ def add_product(request):
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,

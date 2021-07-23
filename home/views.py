@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from products.models import Product
+from products.models import Category
 
 # Create your views here.
 
+
 def index(request):
-    products = Product.objects.filter(is_featured=True)
+    featured_products = Product.objects.filter(is_featured=True)
 
     context = {
-        'products': products,
+        'featured_products': featured_products,
     }
 
     return render(request, 'home/index.html', context)

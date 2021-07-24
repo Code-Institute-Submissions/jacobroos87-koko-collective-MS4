@@ -46,11 +46,9 @@ def add_review(request, product_id):
     return redirect(reverse('product_detail', args=(product_id,)))
 
 
-def edit_review(request, review_id, product_id):
+def edit_review(request, review_id):
     review = get_object_or_404(Reviews, pk=review_id)
-    if review.user is not request.user:
-        messages.error(request, "You do not have permission to do this.")
-        return redirect(reverse("product_detail", args=(product_id,)))
+
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
         product = Product.objects.get(name=review.product)
@@ -67,4 +65,5 @@ def edit_review(request, review_id, product_id):
             messages.error(request,
                            "Unable to update review, please try again.")
 
-        return redirect(reverse('product_detail', args=(review.product_id,)))
+        return redirect(reverse(
+                                'product_detail', args=(review.product.id,)))

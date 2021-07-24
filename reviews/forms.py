@@ -39,4 +39,4 @@ class ReviewForm(forms.ModelForm):
                 self.fields[field].label = False
 
             self.fields[field].widget.attrs['class'] = (
-                'm-3 rounded-0')
+                'mb-3 rounded-0')

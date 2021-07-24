@@ -48,6 +48,10 @@ def add_review(request, product_id):
 
 def edit_review(request, review_id):
     review = get_object_or_404(Reviews, pk=review_id)
+    if not review.request.user:
+        messages.error(request, 'Sorry, you can only edit your own reviews!')
+        return redirect(reverse(
+                                'product_detail', args=(review.product.id,)))
 
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
@@ -67,3 +71,24 @@ def edit_review(request, review_id):
 
         return redirect(reverse(
                                 'product_detail', args=(review.product.id,)))
+
+
+def delete_review(request, review_id):
+    review = get_object_or_404(Reviews, pk=review_id)
+    if not review.request.user:
+        messages.error(request, 'Sorry, you can only delete your own reviews!')
+        return redirect(reverse(
+                                'product_detail', args=(review.product.id,)))
+
+    if request.method == "POST":
+        review.delete()
+
+        product = Product.objects.get(name=review.product)
+        reviews = Reviews.objects.filter(product=product)
+        avg_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+        product.avg_rating = Decimal(avg_rating)
+        product.save()
+
+        messages.success(request,
+                         "Your review has been deleted")
+        return redirect(reverse('product_detail', args=(review.product.id,)))

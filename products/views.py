@@ -5,17 +5,16 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from reviews.models import Reviews
 from reviews.forms import ReviewForm
-from profiles.models import UserProfile
-
 from .models import Product, Category
 from .forms import ProductForm
+from profiles.models import UserProfile
 
 # Create your views here.
 
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
-    
+
     products = Product.objects.all()
     query = None
     categories = None
@@ -74,21 +73,20 @@ def product_detail(request, product_id):
         user = None
 
     reviews = Reviews.objects.filter(product=product)
-
     try:
-        item_review = Reviews.objects.get(user=user, product=product)
-        edit_review_form = ReviewForm(instance=item_review)
+        product_review = Reviews.objects.get(user=user, product=product)
+        edit_review_form = ReviewForm(instance=product_review)
 
     except Reviews.DoesNotExist:
         edit_review_form = None
 
     review_form = ReviewForm()
+
     context = {
         'product': product,
         'reviews': reviews,
         'review_form': review_form,
         'edit_review_form': edit_review_form,
-
     }
 
     return render(request, 'products/product_detail.html', context)

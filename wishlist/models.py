@@ -6,7 +6,7 @@ from products.models import Product
 
 class Wishlist(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product, blank=True)
+    products = models.ManyToManyField(Product, blank=True)
 
     def __str__(self):
         return self.user.username

@@ -66,31 +66,34 @@
                                 <th scope="col">Product Info</th>
                                 <th scope="col"></th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Qty</th>
-                                <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
 
                         {% for item in wishlist_items %}
                         <tr>
                             <td class="p-3 w-25">
-                                {% for image in item.product.images.all %}
+                                {% for image in item.images.all %}
                                 {% if image.default %}
                                 <img class="img-fluid rounded" src="{{ image.image.url }}">
                                 {% endif %}
                                 {% endfor %}
                             </td>
                             <td class="py-3">
-                                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                                <p class="my-0"><strong>{{ item.name }}</strong></p>
+                                {% if item.avg_rating %}
+                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.avg_rating }} / 5</small>
+                                {% else %}
+                                <small class="text-muted">No Rating</small>
+                                {% endif %}
                             <p class="my-0">
-                                <strong>Size:</strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
+                                <strong>Size:</strong>{% if item.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
                             </p>
                             <p class="my-0 small text-muted">
-                                SKU: {{ item.product.sku|upper }}
+                                SKU: {{ item.sku|upper }}
                             </p>
                             </td>
                             <td class="py-3">
-                                <p class="my-0">£{{ item.product.price }}</p>
+                                <p class="my-0">£{{ item.price }}</p>
                             </td>
                         </tr>
                         {% endfor %}

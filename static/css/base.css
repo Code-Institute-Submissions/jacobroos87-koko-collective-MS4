@@ -672,3 +672,18 @@ a.category-badge>span.badge:hover {
 .carousel-control-next-icon {
     display: none;
 }
+
+.wishlist-icon i {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    color: black;
+    background-color: #FAB561;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50px;
+    right: 35px;
+    font-size: 18px;
+}

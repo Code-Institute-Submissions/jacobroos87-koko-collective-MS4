@@ -65,7 +65,7 @@
                         <label for="menuToggle" class="menuOpen">
                             <div class="open"></div>
                         </label>
-                        
+
                         <div class="menu menuEffects">
                             <label for="menuToggle"></label>
 
@@ -79,15 +79,20 @@
                                             Shop
                                         </a>
                                         <ul class="dropdown-menu  border-0" aria-labelledby="main-shop">
-                                            <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+                                            </li>
                                             <li><a class="dropdown-item"
                                                     href="{% url 'products' %}?category=dog_collars">Dog
-                                                    Collars</a></li>
-                                            <li><a class="dropdown-item" href="{% url 'products' %}?category=dog_leads">Dog
-                                                    Leads</a></li>
+                                                    Collars</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                    href="{% url 'products' %}?category=dog_leads">Dog
+                                                    Leads</a>
+                                            </li>
                                             <li><a class="dropdown-item"
                                                     href="{% url 'products' %}?category=dog_bandanas">Dog
-                                                    Bandanas</a></li>
+                                                    Bandanas</a>
+                                            </li>
                                             <li><a class="dropdown-item"
                                                     href="{% url 'products' %}?category=wb_dispensers">Waste Bag
                                                     Dispensers</a>
@@ -108,11 +113,12 @@
                                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                                             {% if request.user.is_authenticated %}
                                             {% if request.user.is_superuser %}
-                                            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                                            <a href="{% url 'add_product' %}" class="dropdown-item">Product
+                                                Management</a>
                                             {% endif %}
                                             <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                             <a href="{% url 'view_wishlist' %}" class="dropdown-item">Wishlist</a>
-            
+
                                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                             {% else %}
                                             <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>

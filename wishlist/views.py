@@ -17,8 +17,22 @@ def add_to_wishlist(request, product_id):
         wishlist.products.add(product)
         messages.info(request,
                          f"{product.name} has been added to your wishlist.")
-        
+
     else:
         messages.error(request,
                        "Error, you already have this item in your wishlist!")
     return redirect(reverse("product_detail", args=product_id))
+
+
+def remove_wishlist_item(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    wishlist = get_object_or_404(Wishlist, user=request.user)
+
+    if product in wishlist.products.all():
+        wishlist.products.remove(product)
+        messages.info(request,
+                         f"Success! {product.name} has been removed from your wishlist!")
+    else:
+        messages.error(request, "Error! Please try again")
+
+    return redirect(reverse("view_wishlist"))

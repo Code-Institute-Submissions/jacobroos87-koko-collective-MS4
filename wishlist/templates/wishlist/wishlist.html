@@ -23,93 +23,151 @@
     <div class="row">
         <div class="col">
             {% if request.user.is_authenticated %}
-                {% if wishlist_items %}
-                <div class="d-block d-md-none">
-                    {% for item in wishlist_items %}
-                    <div class="row">
-                        <div class="col-12 col-sm-6 mb-2">
-                            {% for image in item.product.images.all %}
-                            {% if image.default %}
-                            <img class="img-fluid rounded" src="{{ image.image.url }}">
-                            {% endif %}
-                            {% endfor %}
-                        </div>
-                        <div class="col-12 col-sm-6 mb-2">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0">
-                                <strong>Size:</strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
-                            </p>
-                            <p class="my-0 small text-muted">
-                                SKU: {{ item.product.sku|upper }}
-                            </p>
-                        </div>
-                        <div class="col-12 col-sm-6 order-sm-last">
-                            <p class="my-0">Price Each: £{{ item.product.price }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <hr>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="btt-button shadow-sm rounded-0 border border-black">
-                        <a class="btt-link d-flex h-100">
-                            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+            {% if wishlist_items %}
+            <div class="d-block d-md-none">
+                {% for item in wishlist_items %}
+                <div class="row">
+                    <div class="col-12 col-sm-6 mb-2">
+                        {% for image in item.images.all %}
+                        {% if image.default %}
+                        <a href="{% url 'product_detail' item.id %}">
+                            <img class="img-fluid rounded" src="{{ image.image.url }}" alt="{{ item.name }}">
                         </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-12 col-sm-6 mb-2">
+                        <p class="my-0"><strong>{{ item.name }}</strong></p>
+                        <p class="my-0">
+                            <strong>Size:</strong>{% if item.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
+                        </p>
+                        <p class="my-0 small text-muted">
+                            SKU: {{ item.sku|upper }}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 order-sm-last">
+                        <p class="my-0">Price Each: £{{ item.price }}</p>
                     </div>
                 </div>
-                <div class="table-responsive rounded d-none d-md-block">
-                    <table class="table table-sm table-borderless">
-                        <thead class="text-black">
-                            <tr>
-                                <th scope="col">Product Info</th>
-                                <th scope="col"></th>
-                                <th scope="col">Price</th>
-                            </tr>
-                        </thead>
-
-                        {% for item in wishlist_items %}
+                <div class="row">
+                    <div class="col">
+                        <hr>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="btt-button shadow-sm rounded-0 border border-black">
+                    <a class="btt-link d-flex h-100">
+                        <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="table-responsive rounded d-none d-md-block">
+                <table class="table table-sm table-borderless">
+                    <thead class="text-black">
                         <tr>
-                            <td class="p-3 w-25">
-                                {% for image in item.images.all %}
-                                {% if image.default %}
+                            <th scope="col">Product Info</th>
+                            <th scope="col"></th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+
+                    {% for item in wishlist_items %}
+                    <tr>
+                        <td class="p-3 w-25">
+                            {% for image in item.images.all %}
+                            {% if image.default %}
+                            <a href="{% url 'product_detail' item.id %}">
                                 <img class="img-fluid rounded" src="{{ image.image.url }}">
-                                {% endif %}
-                                {% endfor %}
-                            </td>
-                            <td class="py-3">
-                                <p class="my-0"><strong>{{ item.name }}</strong></p>
-                                {% if item.avg_rating %}
-                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.avg_rating }} / 5</small>
-                                {% else %}
-                                <small class="text-muted">No Rating</small>
-                                {% endif %}
-                            <p class="my-0">
-                                <strong>Size:</strong>{% if item.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
-                            </p>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0"><strong>{{ item.name }}</strong></p>
+                            {% if item.avg_rating %}
+                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ item.avg_rating }} / 5</small>
+                            {% else %}
+                            <small class="text-muted">No Rating</small>
+                            {% endif %}
                             <p class="my-0 small text-muted">
                                 SKU: {{ item.sku|upper }}
                             </p>
-                            </td>
-                            <td class="py-3">
-                                <p class="my-0">£{{ item.price }}</p>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-                {% else %}
-                <p class="lead mb-5">Your wishlist is empty.</p>
-                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Keep Shopping</span>
-                </a>
-                {% endif %}
+                        </td>
+                        <td class="py-3">
+                        {% with item.has_sizes as s %}
+                            {% if s %}
+                            <div class="col-12">
+                                <select class="form-control rounded-0 w-75" name="product_size" id='id_product_size'>
+                                    <option value="s/m" selected>S/M</option>
+                                    <option value="m/l">M/L</option>
+                                </select>
+                            </div>
+                            {% endif %}
+                        </td>
+                        <td class="py-3">
+                            <div class="form-group w-75">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-black rounded-0"
+                                            data-item_id="{{ item.id }}" id="decrement-qty_{{ item.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control qty_input" type="number" name="quantity" value="1"
+                                        min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ item.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-black rounded-0"
+                                            data-item_id="{{ item.id }}" id="increment-qty_{{ item.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endwith %}
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">£{{ item.price }}</p>
+                        </td>
+                        <td class="py-3">
+                            <a href="{% url 'remove_wishlist_item' item.id %}"
+                                class="btn-small btn-outline-black rounded-0 mt-5"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <p class="lead mb-5">Your wishlist is empty.</p>
+            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+            {% endif %}
             {% endif %}
         </div>
     </div>
+    <div class="col{% if s %}-12 mt-2{% endif %}">
+        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5  float-right">
+            <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="text-uppercase">Keep Shopping</span>
+        </a>
+    </div>
 </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

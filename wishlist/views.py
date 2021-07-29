@@ -36,3 +36,15 @@ def remove_wishlist_item(request, product_id):
         messages.error(request, "Error! Please try again")
 
     return redirect(reverse("view_wishlist"))
+
+
+def clear_wishlist(request):
+    wishlist = get_object_or_404(Wishlist, user=request.user)
+    try:
+        wishlist.products.clear()
+        messages.info(request,
+                        f"Success! Your wishlist has been cleared!")
+        return redirect(reverse("view_wishlist"))
+    except Exception as e:
+        messages.error(request, f"Error clearing wishlist {e}")
+        return redirect(reverse("products"))

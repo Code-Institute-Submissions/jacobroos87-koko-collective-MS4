@@ -687,3 +687,11 @@ a.category-badge>span.badge:hover {
     right: 35px;
     font-size: 18px;
 }
+
+.fa-trash-alt {
+    color: red;
+}
+
+.btn-outline-grey {
+    border: 1px solid #ced4da;
+}

@@ -24,7 +24,7 @@
         <div class="col">
             {% if request.user.is_authenticated %}
             {% if wishlist_items %}
-            <div class="d-block d-md-none">
+            <div class="d-block d-lg-none">
                 {% for item in wishlist_items %}
                 <div class="row">
                     <div class="col-12 col-sm-6 mb-2">
@@ -61,7 +61,7 @@
                     </a>
                 </div>
             </div>
-            <div class="table-responsive rounded d-none d-md-block">
+            <div class="table-responsive rounded d-none d-lg-block">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
@@ -70,7 +70,7 @@
                             <th scope="col">Size</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
 
@@ -137,7 +137,11 @@
                         </td>
                         <td class="py-3">
                             <a href="{% url 'remove_wishlist_item' item.id %}"
-                                class="btn-small btn-outline-black rounded-0 mt-5"><i class="fas fa-trash"></i></a>
+                                class="btn btn-outline-grey rounded-0"><i class="fas fa-trash-alt icon"></i>
+                            </a>
+                            <a href="{% url 'add_to_bag' item.id %}"
+                                class="btn btn-outline-grey rounded-0"><i class="fas fa-shopping-bag icon"></i>
+                            </a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -156,9 +160,15 @@
         </div>
     </div>
     <div class="col{% if s %}-12 mt-2{% endif %}">
-        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5  float-right">
-            <span class="icon">
-                <i class="fas fa-chevron-left"></i>
+        <a href="#" class="btn btn-black rounded-0 text-uppercase mt-5 ml-1 float-right">
+            <span>
+                <i class="far fa-times-circle icon"></i>
+            </span>
+            <span class="text-uppercase">Clear Wishlist</span>
+        </a>
+        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5 float-right">
+            <span>
+                <i class="fas fa-chevron-left icon"></i>
             </span>
             <span class="text-uppercase">Keep Shopping</span>
         </a>

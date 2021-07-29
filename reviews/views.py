@@ -38,7 +38,7 @@ def add_review(request, product_id):
             product.avg_rating = Decimal(avg_rating)
             product.save()
 
-            messages.success(request, 'Success! Your review has been added!')
+            messages.info(request, 'Success! Your review has been added!')
 
         else:
             messages.error(request, 'Error! Make sure the form information is valid.')
@@ -59,7 +59,7 @@ def edit_review(request, review_id):
             product.avg_rating = Decimal(avg_rating)
             product.save()
 
-            messages.success(request, "Your review has been updated.")
+            messages.info(request, "Your review has been updated.")
         else:
             messages.error(request,
                            "Unable to update review, please try again.")
@@ -83,7 +83,7 @@ def delete_review(request, review_id):
             product.avg_rating = 0
         product.save()
 
-        messages.success(request,
+        messages.info(request,
                          "Your review has been deleted")
 
     except Exception as e:

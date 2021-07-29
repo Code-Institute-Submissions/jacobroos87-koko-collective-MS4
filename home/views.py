@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from products.models import Product
 from products.models import Category
 
@@ -6,10 +6,10 @@ from products.models import Category
 
 
 def index(request):
-    featured_products = Product.objects.filter(is_featured=True)
+    products = Product.objects.all()
 
     context = {
-        'featured_products': featured_products,
+        'products': products,
     }
 
     return render(request, 'home/index.html', context)

@@ -110,12 +110,13 @@
         <div class="product-container col-8 offset-2">
             <div class="row mt-1 mb-2"></div>
             <div class="row">
-                {% for product in featured_products %}
+                {% for product in products %}
+                {% if product.is_featured %}
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="card h-100 border-0">
                         {% for image in product.images.all %}
                         {% if image.default %}
-                        <a href="">
+                        <a href="{% url 'product_detail' product.id %}">
                             <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ product.name }}">
                         </a>
                         {% endif %}
@@ -157,6 +158,7 @@
                 <div class="col-12 d-none d-xl-block mb-5">
                     <hr>
                 </div>
+                {% endif %}
                 {% endif %}
                 {% endfor %}
             </div>

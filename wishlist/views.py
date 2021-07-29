@@ -1,14 +1,16 @@
 from django.shortcuts import (render, get_object_or_404,
                               redirect, reverse)
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Wishlist
 from products.models import Product
 
 
+@login_required
 def view_wishlist(request):
     return render(request, 'wishlist/wishlist.html')
 
-
+@login_required
 def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     wishlist = get_object_or_404(Wishlist, user=request.user)
@@ -23,7 +25,7 @@ def add_to_wishlist(request, product_id):
                        "Error, you already have this item in your wishlist!")
     return redirect(reverse("product_detail", args=product_id))
 
-
+@login_required
 def remove_wishlist_item(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     wishlist = get_object_or_404(Wishlist, user=request.user)
@@ -37,7 +39,7 @@ def remove_wishlist_item(request, product_id):
 
     return redirect(reverse("view_wishlist"))
 
-
+@login_required
 def clear_wishlist(request):
     wishlist = get_object_or_404(Wishlist, user=request.user)
     try:

@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, reverse, get_object_or_404
 from django.db.models import Avg
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 from .models import Reviews
 from .forms import ReviewForm
@@ -8,6 +9,7 @@ from products.models import Product
 from profiles.models import UserProfile
 
 
+@login_required
 def add_review(request, product_id):
     user = UserProfile.objects.get(user=request.user)
     product = get_object_or_404(Product, pk=product_id)
@@ -46,6 +48,7 @@ def add_review(request, product_id):
     return redirect(reverse('product_detail', args=(product_id,)))
 
 
+@login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Reviews, pk=review_id)
     if request.method == "POST":
@@ -68,6 +71,7 @@ def edit_review(request, review_id):
                                 'product_detail', args=(review.product.id,)))
 
 
+@login_required
 def delete_review(request, review_id):
     review = get_object_or_404(Reviews, pk=review_id)
     product = Product.objects.get(name=review.product)

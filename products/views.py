@@ -5,8 +5,10 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from reviews.models import Reviews
 from reviews.forms import ReviewForm
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, ProductImage
+from .forms import ProductForm, ImageForm
+from django.forms import modelformset_factory
+from wishlist.models import Wishlist
 from profiles.models import UserProfile
 
 # Create your views here.
@@ -99,20 +101,39 @@ def add_product(request):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
+    ImageFormSet = modelformset_factory(ProductImage, form=ImageForm, extra=3)
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        formset = ImageFormSet(request.POST, request.FILES, queryset=ProductImage.objects.none())
+
+        if form.is_valid() and formset.is_valid():
+            post_form = form.save(commit=False)
+            user = request.user.id
+            user = get_object_or_404(UserProfile, pk=user)
+            post_form.user = user
+            post_form.save()
+            form.save_m2m()
+
+            for form in formset.cleaned_data:
+                if 'image' in form:
+                    image = form['image']
+                    photo = ProductImage(product=post_form, image=image)
+                    photo.save()
+
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_detail'))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            return redirect(reverse('add_product'))
     else:
         form = ProductForm()
+        formset = ImageFormSet(queryset=ProductImage.objects.none())
 
     template = 'products/add_product.html'
     context = {
         'form': form,
+        'formset': formset,
     }
 
     return render(request, template, context)

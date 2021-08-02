@@ -2,7 +2,7 @@
     <h3>Reviews</h3>
     <hr>
     <div class="mb-2 text-center">
-        <span>{{ product.avg_rating }} </span><i class="fas fa-star mr-1"></i>
+        <i class="fas fa-star mr-1"></i><span>{{ product.avg_rating }} / 5 </span>
         <span>({{ reviews.count }})</span>
     </div>
     {% if user.is_authenticated %}
@@ -48,7 +48,27 @@
         <div class="col-12 col-md-5 row p-3 m-3 border">
             <div class="col-12 col-lg-4 text-center px-0">
                 <p class="mb-0 fw-bold text-uppercase">{{ review.title }}</p>
-                <p class="txt-small" data-value="{{ review.rating }}"></p>
+                {% if review.rating == 1 %}
+                    <i class="fas fa-star mr-1"></i>
+                {% elif review.rating == 2 %}
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                {% elif review.rating == 3 %}
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                {% elif review.rating == 4 %}
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                {% else %}
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                    <i class="fas fa-star mr-1"></i>
+                {% endif %}
             </div>
 
             <div class="col-12 col-lg-8">

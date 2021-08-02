@@ -89,13 +89,11 @@
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="card h-100 border-0">
-                        {% for image in product.images.all %}
-                        {% if image.default %}
+                        {% if product.main_image %}
                         <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ product.main_image.url }}" alt="{{ product.name }}">
                         </a>
                         {% endif %}
-                        {% endfor %}
                         <div class="card-body pb-0">
                             <p class="mb-0">{{ product.name }}</p>
                         </div>

@@ -6,7 +6,7 @@ from .models import Product, Category, ProductImage
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
-    extra = 3
+    extra = 1
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -18,7 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'is_featured',
-        ProductImage,
+        'main_image',
     )
 
     ordering = ('category',)

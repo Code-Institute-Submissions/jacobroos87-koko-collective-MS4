@@ -28,6 +28,7 @@ class Product(models.Model):
                                      decimal_places=1, default=0,
                                      null=True, blank=True)
     is_featured = models.BooleanField(default=False, null=True, blank=True)
+    main_image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -36,5 +37,7 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField()
-    default = models.BooleanField(default=False)
+    image = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.product.name

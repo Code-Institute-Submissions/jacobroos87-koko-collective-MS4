@@ -69,7 +69,11 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    
+    extra_images = ProductImage.objects.filter(product=product)
+    all_images = [product.main_image, extra_images]
+
+    print(all_images)
+
     if request.user.is_authenticated:
         user = UserProfile.objects.get(user=request.user)
     else:
@@ -90,8 +94,9 @@ def product_detail(request, product_id):
         'reviews': reviews,
         'review_form': review_form,
         'edit_review_form': edit_review_form,
+        'extra_images': extra_images,
+        'all_images': all_images,
     }
-    print(context)
 
     return render(request, 'products/product_detail.html', context)
 

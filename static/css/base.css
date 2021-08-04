@@ -50,7 +50,7 @@ body {
 }
 
 .open {
-    background-color: #3c3c3c;
+    background-color: black;
     width: 26px;
     height: 4px;
     display: block;
@@ -63,7 +63,7 @@ body {
 
 .open:before {
     content: "";
-    background-color: #3c3c3c;
+    background-color: black;
     width: 26px;
     height: 4px;
     display: block;
@@ -76,7 +76,7 @@ body {
 
 .open:after {
     content: "";
-    background-color: #3c3c3c;
+    background-color: black;
     width: 26px;
     height: 4px;
     display: block;
@@ -92,6 +92,7 @@ body {
     display: block;
     padding: 25px;
     cursor: pointer;
+    
     float: left;
 }
 
@@ -199,7 +200,7 @@ body {
 
 #menuToggle:checked~.menuOpen .open:before {
     content: "";
-    background-color: white;
+    background-color: black;
     transform: rotate(45deg);
     position: absolute;
     top: 0;
@@ -209,7 +210,7 @@ body {
 
 #menuToggle:checked~.menuOpen .open:after {
     content: "";
-    background-color: white;
+    background-color: black;
     transform: rotate(-45deg);
     position: relative;
     top: 0;

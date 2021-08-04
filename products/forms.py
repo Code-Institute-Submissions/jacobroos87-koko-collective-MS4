@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['category', 'sku', 'name', 'description', 'has_sizes', 'price', 'avg_rating', 'is_featured', 'main_image']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -15,19 +15,19 @@ class ProductForm(forms.ModelForm):
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
         self.fields['category'].choices = friendly_names
+        self.fields['main_image'].required = True
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
 
 
-class ImageForm(forms.ModelForm):
+class ImageForm(ProductForm):
 
-    class Meta:
-        model = ProductImage
-        fields = ('image',)
+    images = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
-    image = forms.ImageField(
-        label='Image', required=False, widget=CustomClearableFileInput)
-
+    class Meta(ProductForm.Meta):
+        fields = ProductForm.Meta.fields + ['images',]
+        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['image'].required = True
+        self.fields['images'].required = False

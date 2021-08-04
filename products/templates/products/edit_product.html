@@ -32,6 +32,10 @@
                             {{ field }}
                         {% endif %}
                     {% endfor %}
+                    <div class="form-group">
+                        <label for="extra_images">Images</label>
+                        <input type="file" name="images" class="form-control-file" id="extra_images" multiple>
+                    </div>
                     <div class="text-right">
                         <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
                         <button class="btn btn-black rounded-0" type="submit">Update Product</button>

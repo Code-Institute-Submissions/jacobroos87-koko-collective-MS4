@@ -70,9 +70,6 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     extra_images = ProductImage.objects.filter(product=product)
-    all_images = [product.main_image, extra_images]
-
-    print(all_images)
 
     if request.user.is_authenticated:
         user = UserProfile.objects.get(user=request.user)
@@ -95,7 +92,6 @@ def product_detail(request, product_id):
         'review_form': review_form,
         'edit_review_form': edit_review_form,
         'extra_images': extra_images,
-        'all_images': all_images,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -108,39 +104,40 @@ def add_product(request):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    ImageFormSet = modelformset_factory(ProductImage, form=ImageForm, extra=3)
-
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        formset = ImageFormSet(request.POST, request.FILES, queryset=ProductImage.objects.none())
+        form = ImageForm(request.POST, request.FILES)
+        files = request.FILES.getlist('images')
 
-        if form.is_valid() and formset.is_valid():
-            post_form = form.save(commit=False)
-            user = request.user.id
-            user = get_object_or_404(UserProfile, pk=user)
-            post_form.user = user
-            post_form.save()
-            form.save_m2m()
+        if form.is_valid():
+            category = form.cleaned_data['category']
+            sku = form.cleaned_data['sku']
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            has_sizes = form.cleaned_data['has_sizes']
+            price = form.cleaned_data['price']
+            avg_rating = form.cleaned_data['avg_rating']
+            is_featured = form.cleaned_data['is_featured']
+            main_image = form.cleaned_data['main_image']
+            product_object = Product.objects.create(
+                category=category, sku=sku, name=name, description=description,
+                has_sizes=has_sizes, price=price, avg_rating=avg_rating,
+                is_featured=is_featured, main_image=main_image)
 
-            for form in formset.cleaned_data:
-                if 'image' in form:
-                    image = form['image']
-                    photo = ProductImage(product=post_form, image=image)
-                    photo.save()
+            for f in files:
+                ProductImage.objects.create(
+                    product=product_object, extra_images=f)
 
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail'))
+            return redirect(reverse('products'))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
             return redirect(reverse('add_product'))
     else:
         form = ProductForm()
-        formset = ImageFormSet(queryset=ProductImage.objects.none())
 
     template = 'products/add_product.html'
     context = {
         'form': form,
-        'formset': formset,
     }
 
     return render(request, template, context)
@@ -155,8 +152,17 @@ def edit_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
+
         form = ProductForm(request.POST, request.FILES, instance=product)
+        files = request.FILES.getlist('images')
+        current_images = ProductImage.objects.filter(product=product)
         if form.is_valid():
+            if files:
+                current_images.delete()
+            for f in files:
+                ProductImage.objects.create(
+                    product=product, extra_images=f)
+
             form.save()
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))

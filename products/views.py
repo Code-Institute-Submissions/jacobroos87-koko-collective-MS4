@@ -156,7 +156,7 @@ def edit_product(request, product_id):
 
         form = ProductForm(request.POST, request.FILES, instance=product)
         files = request.FILES.getlist('images')
-        
+
         if form.is_valid():
             if files:
                 current_images.delete()
@@ -165,7 +165,7 @@ def edit_product(request, product_id):
                     product=product, extra_images=f)
 
             form.save()
-            
+
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -173,6 +173,8 @@ def edit_product(request, product_id):
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
+
+    print(current_images)
 
     template = 'products/edit_product.html'
     context = {

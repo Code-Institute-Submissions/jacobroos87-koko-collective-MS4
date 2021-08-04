@@ -39,11 +39,7 @@
                     {% for item in bag_items %}
                         <div class="row">
                             <div class="col-12 col-sm-6 mb-2">
-                                {% for image in item.product.images.all %}
-                                    {% if image.default %}
-                                    <img class="img-fluid rounded" src="{{ image.image.url }}">
-                                    {% endif %}
-                                {% endfor %}
+                                <img class="img-fluid rounded" src="{{ item.product.main_image.url }}">
                             </div>
                             <div class="col-12 col-sm-6 mb-2">
                                 {% include "bag/product-info.html" %}
@@ -79,11 +75,7 @@
                         {% for item in bag_items %}
                             <tr>
                                 <td class="p-3 w-25">
-                                    {% for image in item.product.images.all %}
-                                        {% if image.default %}
-                                        <img class="img-fluid rounded" src="{{ image.image.url }}">
-                                        {% endif %}
-                                    {% endfor %}
+                                    <img class="img-fluid rounded" src="{{ item.product.main_image.url }}">
                                 </td>
                                 <td class="py-3">
                                     {% include "bag/product-info.html" %}

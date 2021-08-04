@@ -1,5 +1,5 @@
 from django.shortcuts import (render, get_object_or_404,
-                              redirect, reverse)
+                              redirect, reverse, HttpResponse)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Wishlist
@@ -28,6 +28,7 @@ def add_to_wishlist(request, product_id):
 def remove_wishlist_item(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     wishlist = get_object_or_404(Wishlist, user=request.user)
+    origin = request.GET.get('origin')
 
     if product in wishlist.products.all():
         wishlist.products.remove(product)
@@ -36,7 +37,10 @@ def remove_wishlist_item(request, product_id):
     else:
         messages.error(request, "Error! Please try again")
 
-    return redirect(reverse("view_wishlist"))
+    if origin == 'wishlist':
+        return redirect(reverse("view_wishlist"))
+    else:
+        return redirect(reverse("product_detail", args=[product_id]))
 
 @login_required
 def clear_wishlist(request):

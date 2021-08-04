@@ -28,13 +28,13 @@
                 {% for item in wishlist_items %}
                 <div class="row">
                     <div class="col-12 col-sm-6 mb-2">
-                        
+
                         {% if item.main_image %}
                         <a href="{% url 'product_detail' item.id %}">
                             <img class="img-fluid rounded" src="{{ item.main_image.url }}" alt="{{ item.name }}">
                         </a>
                         {% endif %}
-                        
+
                     </div>
                     <div class="col-12 col-sm-6 mb-2">
                         <p class="my-0"><strong>{{ item.name }}</strong></p>
@@ -69,7 +69,7 @@
                             <th scope="col"></th>
                             <th scope="col">Size</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Unit Price</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -77,13 +77,13 @@
                     {% for item in wishlist_items %}
                     <tr>
                         <td class="p-3 w-25">
-                            
+
                             {% if item.main_image %}
                             <a href="{% url 'product_detail' item.id %}">
                                 <img class="img-fluid rounded" src="{{ item.main_image.url }}">
                             </a>
                             {% endif %}
-                            
+
                         </td>
                         <td class="py-3">
                             <p class="my-0"><strong>{{ item.name }}</strong></p>
@@ -96,59 +96,66 @@
                                 SKU: {{ item.sku|upper }}
                             </p>
                         </td>
-                        <td class="py-3">
-                        {% with item.has_sizes as s %}
-                            {% if s %}
-                            <div class="col-12">
-                                <select class="form-control rounded-0 w-75" name="product_size" id='id_product_size'>
-                                    <option value="s/m" selected>S/M</option>
-                                    <option value="m/l">M/L</option>
-                                </select>
-                            </div>
-                            {% endif %}
-                        </td>
-                        <td class="py-3">
-                            <div class="form-group w-75">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-black rounded-0"
-                                            data-item_id="{{ item.id }}" id="decrement-qty_{{ item.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <input class="form-control qty_input" type="number" name="quantity" value="1"
-                                        min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ item.id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty btn btn-black rounded-0"
-                                            data-item_id="{{ item.id }}" id="increment-qty_{{ item.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </button>
+                        <form class="form" action="{% url 'add_to_bag' item.id %}" method="POST">
+                            {% csrf_token %}
+                            <td class="py-3">
+                                {% with item.has_sizes as s %}
+                                {% if s %}
+                                <div class="col-12">
+                                    <select class="form-control rounded-0 w-75" name="product_size"
+                                        id='id_product_size'>
+                                        <option value="s/m" selected>S/M</option>
+                                        <option value="m/l">M/L</option>
+                                    </select>
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td class="py-3">
+                                <div class="form-group w-75">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="decrement-qty btn btn-black rounded-0"
+                                                data-item_id="{{ item.id }}" id="decrement-qty_{{ item.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-minus"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <input class="form-control qty_input" type="number" name="quantity" value="1"
+                                            min="1" max="99" data-item_id="{{ item.id }}" id="id_qty_{{ item.id }}">
+                                        <div class="input-group-append">
+                                            <button class="increment-qty btn btn-black rounded-0"
+                                                data-item_id="{{ item.id }}" id="increment-qty_{{ item.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endwith %}
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0">£{{ item.price }}</p>
-                        </td>
-                        <td class="py-3">
-                            <a href="{% url 'remove_wishlist_item' item.id %}"
-                                class="btn btn-outline-grey rounded-0"><i class="fas fa-trash-alt icon"></i>
-                            </a>
-                            <a href="{% url 'add_to_bag' item.id %}"
-                                class="btn btn-outline-grey rounded-0"><i class="fas fa-shopping-bag icon"></i>
-                            </a>
-                        </td>
+                                
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">£{{ item.price }}</p>
+                            </td>
+                            <td class="py-3">
+                                <a href="{% url 'remove_wishlist_item' item.id %}?origin=wishlist"
+                                    class="btn btn-outline-grey rounded-0"><i class="fas fa-trash-alt icon"></i>
+                                </a>
+                                <button type="submit" value="Add to Bag" class="btn btn-outline-grey rounded-0">
+                                    <i class="fas fa-shopping-bag icon"></i>
+                                </button>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                {% endwith %}
+                            </td>
+                        </form>
                     </tr>
                     {% endfor %}
                 </table>
             </div>
             <div class="col{% if s %}-12 mt-2{% endif %}">
-                <a href="{% url 'clear_wishlist' %}" class="btn btn-black rounded-0 text-uppercase mt-5 ml-1 float-right">
+                <a href="{% url 'clear_wishlist' %}"
+                    class="btn btn-black rounded-0 text-uppercase mt-5 ml-1 float-right">
                     <span>
                         <i class="far fa-times-circle icon"></i>
                     </span>

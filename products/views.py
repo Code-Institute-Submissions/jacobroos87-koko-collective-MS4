@@ -151,11 +151,12 @@ def edit_product(request, product_id):
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
+    current_images = ProductImage.objects.filter(product=product)
     if request.method == 'POST':
 
         form = ProductForm(request.POST, request.FILES, instance=product)
         files = request.FILES.getlist('images')
-        current_images = ProductImage.objects.filter(product=product)
+        
         if form.is_valid():
             if files:
                 current_images.delete()
@@ -164,6 +165,7 @@ def edit_product(request, product_id):
                     product=product, extra_images=f)
 
             form.save()
+            
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -176,6 +178,7 @@ def edit_product(request, product_id):
     context = {
         'form': form,
         'product': product,
+        'current_images': current_images,
     }
 
     return render(request, template, context)

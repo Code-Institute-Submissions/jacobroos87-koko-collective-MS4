@@ -17,3 +17,7 @@ def index(request):
 
 def bad_request(request, *args, **argv):
     return render(request, 'home/400.html')
+
+
+def permission_denied(request, *args, **argv):
+    return render(request, 'home/403.html')

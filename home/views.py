@@ -21,3 +21,7 @@ def bad_request(request, *args, **argv):
 
 def permission_denied(request, *args, **argv):
     return render(request, 'home/403.html')
+
+
+def page_not_found(request, *args, **argv):
+    return render(request, 'home/404.html')

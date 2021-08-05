@@ -25,3 +25,7 @@ def permission_denied(request, *args, **argv):
 
 def page_not_found(request, *args, **argv):
     return render(request, 'home/404.html')
+
+
+def server_error(request, *args, **argv):
+    return render(request, 'home/500.html')

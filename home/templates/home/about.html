@@ -1,0 +1,66 @@
+{% extends 'project-base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row align-items-center">
+        <div class="col-6 desc-col">
+            <h2 class="desc-header">The Artisans</h2>
+            <p class="text-left desc-text">
+                Koko Collective’s products are made by the charity Calcutta Rescue. 
+                They employ 10 artisans that have been connected to the charity either due to illness or from attending the charity's schools. 
+                We have had the pleasure to travel to India and work closely with the team to design and create our products. 
+                Each member of the team is in charge of a different process of making and quality control checks are made after each process. 
+                Calcutta Rescue is Fair Trade certified giving their employees a fair wage and access to free healthcare and schooling for their families.
+            </p>
+        </div>
+        <div class="col-6 p-0">
+            <img src="{% static '../media/the-artisans.jpg' %}" class="img-fluid" alt="The Artisans">
+        </div>
+    </div>
+</div>
+<hr class="mb-5">
+<div class="container mb-5">
+    <div class="row align-items-center">
+        <div class="col-6 p-0">
+            <img src="{% static '../media/eco-friendly.jpg' %}" class="img-fluid" alt="The Artisans">
+        </div>
+        <div class="col-6 desc-col">
+            <h2 class="desc-header">Eco Friendly</h2>
+            <p class="text-left desc-text">
+                In India the people still have a culture of fixing rather than throwing away unlike our western culture. 
+                Here at Koko Collective we wanted to take this ethos and use recycled materials to make all our products. 
+                In our Dog accessoires we use recycled bicycle inner tube which is sourced from local repair shops in Kolkata, India. 
+                This is a great vegan alternative to leather as its durable and waterproof, withstanding general wear and tear. 
+                All the fabrics used in our products are sourced locally at second hand sari markets, our team choose fabrics that are not silk to keep our products 100% vegan.
+            </p>
+        </div>
+        
+    </div>
+</div>
+<hr class="mb-5">
+<div class="container mb-5">
+    <div class="row align-items-center">
+        <div class="col-6 desc-col">
+            <h2 class="desc-header">Social Enterprise</h2>
+            <p class="text-left desc-text">
+                Calcutta Rescue employs ladies from surrounding villages who come to the workshop each week for training and to take home embroidery work. 
+                This means they can work from home and look after their families. Training is given by more experienced artisans until the quality is of a high standard.
+                This project is crucial as it gives independence to the ladies in rural poor communities enabling them to earn a wage and provide for their families.
+                At Koko Collective you'll see some of their excellent work on our Dog Bandanas and hopefully in the future we'll be able to add scarves and other accessories!
+            </p>
+        </div>
+        <div class="col-6 p-0">
+            <img src="{% static '../media/social-enterprise.jpg' %}" class="img-fluid" alt="The Artisans">
+        </div>
+    </div>
+</div>
+{% endblock %}

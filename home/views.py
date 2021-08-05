@@ -29,3 +29,8 @@ def page_not_found(request, *args, **argv):
 
 def server_error(request, *args, **argv):
     return render(request, 'home/500.html')
+
+
+def about(request):
+    """ A view to return the about page """
+    return render(request, 'home/about.html')

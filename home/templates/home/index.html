@@ -182,7 +182,7 @@
                     <img src="{% static '../media/full-set-home.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
-                    <a href="{% url 'products' %}"
+                    <a href="{% url 'products' %}?category=dog_collars,dog_leads,dog_bandanas"
                         class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-3 shadow">SHOP FULL SETS</a>
                 </div>
             </div>
@@ -193,7 +193,7 @@
                     <img src="{% static '../media/flash-bandana.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
-                    <a href="{% url 'products' %}"
+                    <a href="{% url 'products' %}?category=dog_bandanas"
                         class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-3 shadow">SHOP BANDANAS</a>
                 </div>
             </div>
@@ -204,7 +204,7 @@
                     <img src="{% static '../media/wb-home.jpg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
-                    <a href="{% url 'products' %}"
+                    <a href="{% url 'products' %}?category=wb_dispensers"
                         class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-3 shadow">SHOP DISPENSERS</a>
                 </div>
             </div>
@@ -219,9 +219,10 @@
             <h2 class="handmade-text text-uppercase">
                 Handmade in India
             </h2>
-            <img src="{% static '../media/handmade-banner.jpg' %}" class="img-fluid w-100" alt="">
-            <a href="{% url 'products' %}"
-                class="handmade-button btn btn-lg rounded-0 text-uppercase py-3 shadow">Find out more</a>
+            <img src="{% static '../media/handmade-banner.jpg' %}" class="img-fluid w-100" alt="Artisan Sewing">
+            <a href="{% url 'about' %}" class="handmade-button btn btn-lg rounded-0 text-uppercase py-3 shadow">
+                Find out more
+            </a>
         </div>
     </div>
 </div>

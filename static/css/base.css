@@ -234,24 +234,22 @@ body {
     margin-bottom: 5px;
 }
 
-
-
 .desc-col {
     padding: 25px;
 }
 
 .desc-header {
-    font-size: 42px;
+    font-size: clamp(1.3rem, -0.675rem + 3.333333vw, 2rem);
     margin-bottom: 20px;
     color: black;
 }
 
 .desc-text {
-    font-size: 28px;
+    font-size: clamp(0.9rem, -0.675rem + 3.333333vw, 1.6rem);
 }
 
 .key-points i {
-    font-size: 48px;
+    font-size: clamp(1.3rem, -0.675rem + 3.333333vw, 2rem);
     margin-top: 10px;
     margin-bottom: 25px;
     color: #000;
@@ -262,8 +260,22 @@ body {
     background-color: #E3C0D3;
 }
 
+.key-points-div h2 {
+    font-size: clamp(1.3rem, -0.675rem + 2.333333vw, 2rem);
+}
+
 .testimonials {
     background-color: #077187;
+    width: 100%;
+    height: 300px;
+}
+
+.testimonials h3 {
+    font-size: clamp(1.3rem, -0.675rem + 2.333333vw, 2rem);
+}
+
+.new-collection {
+    font-size: clamp(1.3rem, -0.675rem + 2.333333vw, 2rem);
 }
 
 .carousel-item {
@@ -273,8 +285,13 @@ body {
 .brand-description {
     background-color: #077187;
     margin: auto;
-    width: 650px;
-    height: 140px;
+    width: calc(15rem + 15vw);
+    height: calc(3rem + 5vw);
+}
+
+.brand-description h1 {
+    font-size: clamp(1.5rem, -0.675rem + 2.666666vw, 3rem);
+    padding-top: calc(3px + 1vw);
 }
 
 .icon {
@@ -294,34 +311,36 @@ i.fa-bars.icon {
 .shop-now-button {
     background: #FAB561;
     color: white;
-    max-width: 260px;
+    font-size: clamp(1rem, -0.675rem + 2.333333vw, 1.3rem);
 }
 
 .banner-card-buttons {
     background: #FAB561;
     color: white;
-    max-width: 260px;
     position: absolute;
     bottom: 5px;
     left: 25%;
     right: 25%;
+    font-size: clamp(1rem, -0.675rem + 2.333333vw, 1.3rem);
 }
 
 .handmade-button {
     background: #077187;
     color: white;
-    min-width: 260px;
     position: absolute;
-    bottom: 15%;
-    right: 5%;
+    bottom: calc(1rem + 2.8vw);
+    right: 10%;
+    font-size: clamp(1rem, -0.675rem + 2.333333vw, 1.3rem);
 }
 
 .handmade-text {
-    font-size: 48px;
+    font-size: clamp(1.8rem, -0.675rem + 3.333333vw, 2.2rem);
     color: white;
     position: absolute;
-    bottom: 22%;
-    right: 5%;
+    bottom: calc(3.5rem + 3.1vw);
+    right: 10%;
+    padding: 0px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .btn-black {
@@ -527,6 +546,12 @@ a.category-badge>span.badge:hover {
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
+@media (max-width: 1200px) {
+    .card-banner-item {
+        padding: 0;
+    }
+}
+
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;

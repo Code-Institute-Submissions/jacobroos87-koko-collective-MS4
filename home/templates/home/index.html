@@ -20,8 +20,7 @@
             </div>
             <div class="my-5">
                 <h4>
-                    <a href="{% url 'products' %}"
-                        class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3 shadow">
+                    <a href="{% url 'products' %}" class="shop-now-button btn rounded-0 text-uppercase py-2 shadow">
                         Shop Now
                     </a>
                 </h4>
@@ -31,7 +30,7 @@
 </div>
 <div class="container-fluid">
     <div class="row align-items-center">
-        <div class="col-6 desc-col">
+        <div class="col-12 col-sm-6 desc-col">
             <h2 class="desc-header">Designed for outdoor days and everday.</h2>
             <p class="text-left desc-text">
                 KOKO makes premium quality, go anywhere dog gear. Modern and stylish for exploring the city and rugged
@@ -43,12 +42,12 @@
             <div class="my-5">
                 <h4>
                     <a href="{% url 'products' %}"
-                        class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3 shadow">Shop
+                        class="shop-now-button btn btn-lg rounded-0 text-uppercase py-2 shadow">Shop
                         Now</a>
                 </h4>
             </div>
         </div>
-        <div class="col-6 p-0">
+        <div class="col-6 p-0 d-none d-md-block">
             <img src="{% static '../media/desc-img.jpg' %}" class="img-fluid" alt="Clara & Tia">
         </div>
     </div>
@@ -75,26 +74,35 @@
         <img src="{% static '../media/banner-img.jpg' %}" class="img-fluid" alt="Clara & Tia">
     </div>
 </div>
-<div class="container-fluid testimonials">
-    <div class="carousel-fade p-5" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active text-center m-5">
-                <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks
-                    simply adorable!</h3>
-                <p>Jessie - Oxford, UK</p>
-            </div>
-            <div class="carousel-item">
+<div class="container-fluid testimonials pt-2">
+    <div class="container">
+        <div id="myCarousel" class="carousel p-2 slide" data-ride="carousel" data-interval="8000">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner pt-3">
                 <div class="carousel-item active text-center">
                     <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks
-                        simply adorable!</h3>
+                        simply adorable! I get compliments every time i'm on a walk!"</h3>
+                    <br>
                     <p>Jessie - Oxford, UK</p>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-item active text-center">
-                    <h3>"The best collar I've bought thus far! I totally love how colourful they are and puffles looks
-                        simply adorable!</h3>
-                    <p>Jessie - Oxford, UK</p>
+                <div class="carousel-item text-center">
+                    <h3>"I've been a fan of KOKO collective for a long time as all the products use recycled materials
+                        I recently bought a full set including a collar, lead and bandana!!"
+                    </h3>
+                    <br>
+                    <p>James - Liverpool, UK</p>
+                </div>
+                <div class="carousel-item text-center">
+                    <h3>"Love all the colour this adds to my life! I have a hectic spaniel and these collars can
+                        withstand everything he throws at them!
+                        Yes I have multiple! Highly recommend!"
+                    </h3>
+                    <br>
+                    <p>Billy - Brighton, UK</p>
                 </div>
             </div>
         </div>
@@ -103,7 +111,7 @@
 <div class="container-fluid">
     <div class="row ">
         <div class="col text-center mt-3">
-            <h2 class="m-4">SHOP THE NEW COLLECTION</h2>
+            <h2 class="m-3 new-collection">SHOP THE NEW COLLECTION</h2>
         </div>
     </div>
     <div class="row">
@@ -114,13 +122,14 @@
                 {% if product.is_featured %}
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="card h-100 border-0">
-                        
+
                         {% if product.main_image %}
                         <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ product.main_image.url }}" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ product.main_image.url }}"
+                                alt="{{ product.name }}">
                         </a>
                         {% endif %}
-                        
+
                         <div class="card-body pb-0">
                             <p class="mb-0">{{ product.name }}</p>
                         </div>
@@ -168,13 +177,13 @@
         <div class="col-12 my-auto text-center my-5">
             <h4>
                 <a href="{% url 'products' %}"
-                    class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3 shadow">View
+                    class="shop-now-button btn btn-lg rounded-0 text-uppercase py-2 shadow">View
                     All</a>
             </h4>
         </div>
     </div>
 </div>
-<div class="container-fluid banner-links">
+<div class="container-fluid banner-links pb-4">
     <div class="row">
         <div class="col-md-4 card-banner-item">
             <div class="card h-100 border-0 m-2">
@@ -183,7 +192,7 @@
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
                     <a href="{% url 'products' %}?category=dog_collars,dog_leads,dog_bandanas"
-                        class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-3 shadow">SHOP FULL SETS</a>
+                        class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-2 shadow">SHOP FULL SETS</a>
                 </div>
             </div>
         </div>
@@ -194,7 +203,7 @@
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
                     <a href="{% url 'products' %}?category=dog_bandanas"
-                        class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-3 shadow">SHOP BANDANAS</a>
+                        class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-2 shadow">SHOP BANDANAS</a>
                 </div>
             </div>
         </div>
@@ -205,7 +214,7 @@
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
                     <a href="{% url 'products' %}?category=wb_dispensers"
-                        class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-3 shadow">SHOP DISPENSERS</a>
+                        class="banner-card-buttons btn btn-lg rounded-0 text-uppercase py-2 shadow">SHOP DISPENSERS</a>
                 </div>
             </div>
         </div>
@@ -220,14 +229,10 @@
                 Handmade in India
             </h2>
             <img src="{% static '../media/handmade-banner.jpg' %}" class="img-fluid w-100" alt="Artisan Sewing">
-            <a href="{% url 'about' %}" class="handmade-button btn btn-lg rounded-0 text-uppercase py-3 shadow">
+            <a href="{% url 'about' %}" class="handmade-button btn btn-lg rounded-0 text-uppercase py-2 shadow">
                 Find out more
             </a>
         </div>
     </div>
 </div>
-
-
-
-
 {% endblock %}

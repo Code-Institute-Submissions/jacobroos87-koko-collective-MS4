@@ -13,3 +13,7 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def bad_request(request, *args, **argv):
+    return render(request, 'home/400.html')

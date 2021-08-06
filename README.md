@@ -402,24 +402,39 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 * At the bottom of the Product Detail page is the review section where the user can review the item in question. Below the Reviews title is the average rating for the product follow by the "Review Item" button which opens a form in a model with 3 fields: Title, Description and Rating.  Once completed the review is displayed in a box. To the left is the review title, product star rating, the username of the user who posted the review, and the date. To the right is the review description and if the user is logged in two icons will be visible which enables the user to either edit or delete their review.
 
 ### Wishlist
-* 
-
+* The wishlist has pretty much all the features of the shopping bag without the subtotal.  The parts that make it unique is the option to either remove the item from this list or to transfer it to the shopping bag.  At the bottom the user can also return to the products page with the "Keep Shopping" button or clear their wishlist.
 
 ### Shopping Bag
+* The shopping bag has all the crud features available, allowing the user to eiher remove the item or increase/decrease the quantities.  The subtotal is dynamic and there are notifications for all changes made.
 
 ### Checkout
+* The checkout page will self populate the delivery information if this exists in the current user's profile.  The user can also make changes and tick the 'save my delivery information' button to update this on their profile.  At the bottom of the delivery form is a Stripe payment element with Stripe validation. 
+
+* ### Test Transaction Details:
+    * *Credit Card: 4242 4242 4242 4242*
+    * *Expiration Date: 04 / 24*
+    * *CVC: 424*
+    * *ZIP: 42424*
+
+* An order summary is displayed for the user and there's also 2 buttons giving the user the option to adjust their bag or complete their order. A small notification informing the user that their card will be charged is also located before the complete order button.
 
 ### Checkout Success
+* This page displays order information to the user.  This information is then also stored in the users profile which can be viewed there.
 
 ### Profile
+* The profile displays default delivery information which can be updated. A list of past orders are also displayed that the user can click to see the full order details.
 
-### Product Management
-
-### Add Product
+### Add Product (Product Management)
+* This page is only accessible by admin users.  The page has a simple forms including all the fields from the product model.  It also has two sections at the bottom of the form where the admin user can upload a main image (*required), and below that is another optional upload button that allows the user to select multiple files.
 
 ### Edit Product
+* This page has the same form as the add product page and is once again only accessible to admin users.  This page however displays small thumbnails for the current images associated with the product.  The main image can be changed but not removed as it is required.  The additional images are shown to the user and if the user chooses to upload new images then the current set will be replaced.
 
 ### Authentication
+* All of the authentication is handled by allauth.
+* Once registered the user will be sent an email to verify their registration.
+* Some extra styling has been added to templates to make them suite the style of the site.
+
 
 ### Future Features
 

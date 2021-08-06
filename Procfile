@@ -1,0 +1,1 @@
+web: gunicorn koko_collective.wsgi:application

@@ -7,8 +7,6 @@ from reviews.models import Reviews
 from reviews.forms import ReviewForm
 from .models import Product, Category, ProductImage
 from .forms import ProductForm, ImageForm
-from django.forms import modelformset_factory
-from wishlist.models import Wishlist
 from profiles.models import UserProfile
 
 # Create your views here.

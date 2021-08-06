@@ -16,10 +16,10 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 **<details><summary>Structure</summary>**
 * [Design Process](#design-process)
-    * [Page Structure](#page-structure)
-    * [Page Summaries](#page-summaries)
-    * [Django Apps & Packages](#django-apps-and-packages)
-    * [Database Design & Structure](#database-design-and-structure)
+* [Page Structure](#page-structure)
+* [Page Summaries](#page-summaries)
+* [Django Apps & Packages](#django-apps-and-packages)
+* [Database Design & Structure](#database-design-and-structure)
 
 </details>
 
@@ -30,9 +30,9 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 </details>
 
 **<details><summary>Skeleton</summary>**
-* [Wireframe Designs](#wireframe-designs)
+* [Wireframes](#wireframes)
 * [Final Project Design Differences](#wireframe-and-final-project-differences)
-* [Responsive Design](#responsive-page-design)
+* [Responsive Design](#responsive-design)
 
 </details>
 
@@ -56,7 +56,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
     * [Add Product](#add-product)
     * [Edit Product](#edit-product)
     * [Authentication](#authentication)
-    * [Future Features](#future-features)
+* [Future Features](#future-features)
 
 </details>
 
@@ -83,3 +83,120 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
     * [Books](#books)
 
 </details>
+
+# Strategy and Scope
+## UX
+
+### Business Objectives
+
+
+
+### User Objectives
+
+### User Stories
+
+# Structure
+
+### Design Process
+
+### Page Structure
+
+### Page Summaries
+
+### Django Apps and Packages
+
+### Database Design and Structure
+
+# Surface
+
+### Colours
+
+### Fonts
+
+# Skeleton
+
+### Wireframes
+
+### Wireframe and Final Project Differences
+
+### Responsive Page Design
+
+# Features
+
+### Sitewide
+
+### Navbar
+
+### Banner
+
+### Footer
+
+### Homepage
+
+### About
+
+### Products
+
+### Product Detail
+
+### Reviews
+
+### Wishlist
+
+### Shopping Bag
+
+### Checkout
+
+### Checkout Success
+
+### Profile
+
+### Product Management
+
+### Add Product
+
+### Edit Product
+
+### Authentication
+
+### Future Features
+
+# Technologies Used
+
+### Languages
+
+### Libraries
+
+### Tools
+
+### Database
+
+### Payment Handling
+
+# Testing
+
+# Deployment
+
+### Gitpod
+
+### Hosting on Heroku
+
+### Hosting Files using AWS
+
+### Cloning
+
+# Credits
+
+### Content
+
+### Media
+
+#### Images
+
+### Acknowledgements
+
+### Online and Physical
+
+### Websites
+
+### Books

@@ -436,19 +436,59 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 * Some extra styling has been added to templates to make them suite the style of the site.
 
 
-### Future Features
+## Future Features
+<hr>
+1. Introduce more products and categories (Toys, Cat Collars, Treats)
+2. Add sale functionality and an automatic discount for purchasing a full set (Collar, Lead, Bandana)
+3. In the edit product I want to enable the user to remove current images individually instead of having to upload a new bath each time.
+4. Adding the functionality for the user to have multiple delivery addresses that are all saved to their profile,  then offering them a dropdown list when checking out.
+5. I would also love to expand on the confirmation emails and add more imagery and backlinks.
+6. Possibly adding a small product video to the end of the images in the product detail, with crud functionality for admin users in the edit product template.
+7. Implementing a contact page and adding some more focus to social links accross the page, and potentially including an Instagram feed.
+8. Adding sign-up functionality that offers discounts for new subscriptions
+9. Potentially adding a wholesale section.
 
 # Technologies Used
 
-### Languages
+## Languages
+* ### HTML
+    * Base template language
+* ### CSS
+    * Styling HTML code
+* ### JavaScript
+    * Adding interactive elements and support styling
+* ### Python & Django
+    * Used for the backend code
 
-### Libraries
+## Libraries
+
+* #### [Bootstrap4](https://getbootstrap.com/)
+    * Used for layout, forms and other site functionality
+* #### [Font Awesome](https://fontawesome.com/)
+    * Used for all icons
+* #### [Google Fonts](https://fonts.google.com/)
+    * Used for site fonts
+* #### [jQuery](https://jquery.com/)
+    * Used to target and manipulate HTML elements
+
 
 ### Tools
+* [Gitpod](https://www.gitpod.io) - IDE.
+* [Git](https://git-scm.com/) - Version control.
+* [Github](https://github.com/) - Hosting repository.
+* [Heroku](https://dashboard.heroku.com/) - Hosting deployed web app.
+* [Figma](https://www.figma.com/) - Creating site mockups
+* [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) - Testing & Debugging.
+* [w3 html validator](https://validator.w3.org/) - HTML code validation.
+* [w3 css validator](https://jigsaw.w3.org/) - CSS code validation.
+* [jshint](https://jshint.com/) - JS code validation.
 
-### Database
+### Database and Storage
+* [AWS](https://aws.amazon.com/) - Used to store static and media files.
+* [Postgres](https://www.postgresql.org/) - Used to store production database.
 
-### Payment Handling
+### Payments
+* [Stripe](https://stripe.com/) - Used to make payments
 
 # Testing
 

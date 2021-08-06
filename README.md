@@ -264,22 +264,115 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 
 ## Django Apps and Packages
+<hr>
+
+### Koko Collective consists of 7 apps that contain all the site features
+* home
+* products
+* profiles
+* reviews
+* wishlist
+* checkout
+* bag
+
+### Other Django packages included are:
+* crispy_forms
+* storages
+* allauth
 
 ## Database Design and Structure
 
+
+
 # Surface
 
-### Colours
+## Colours
+### The site consists of 3 main colours:
 
-### Fonts
+![KOKO-Teal](documentation/images/koko-teal.png)
+![KOKO-Orange](documentation/images/koko-orange.png)
+![KOKO-Blush-Pink](documentation/images/koko-blush-pink.png)
+
+* Other elements use the built in Bootstrap classes.  For example the messages box arrow colour is based on the nature of the information being displayed.
+* The site also uses black and white for text and certain icons.
+
+## Fonts
+
+### The following fonts were used accross the site:
+* Roboto @ 100 and 400 weights.
+    * I decided on Roboto as it was similar to the logo font and has a modern look.
+* Sans Serif as default backup.
 
 # Skeleton
 
-### Wireframes
+## Wireframes
+<hr>
 
-### Wireframe and Final Project Differences
+## Wireframe and Final Project Differences
+<hr>
 
-### Responsive Page Design
+## Responsive Page Design
+<hr>
+
+### Across the site Bootstrap 4 classes were used to make the site responsive.  Other elements and viewport changes are reflected in the project base.css media queries.
+
+* Header
+    * The site header has added classes to change the order of the items within to allow for a better mobile experience.  For tablets and larger screens the hamburger is to the left, logo central, and account/bag icons to the right.  For mobiles the logo is placed to the left, hamburger to the right and account/bag icons centered underneath.
+
+* Home Page
+
+    * The homepage has classes added so the columns are full width and the sections stack.  I've also made the choice to not display the image that's to the right of the brand summary section for mobiles.  I feel this improves the look and doesn't clutter the UX with too many images while scrolling. For tablets the only change is the featured items reducing to 2 items per row instead of 3.
+
+* About
+
+    * The about page has 3 rows that stack for mobile devices.  The second section also has classes added to change the order to match the 1st and 3rd section.
+
+* Products (which filters in the navbar)
+
+    * The products page has a simple system where there are 3 products per row for large devices, 2 for tablets and 1 for mobile devices.
+
+* Add Product
+
+    * The form on this page covers 50% of the vieport width for large devices and tablets. For mobiles the form extends to the full width.
+
+* Edit Product
+
+    * The form on this page covers 50% of the vieport width for large devices and tablets. For mobiles the form extends to the full width. The current additional images are arranged as 3 items per row, this converts to full width for mobile devices.
+
+* Product Detail (which includes the reviews)
+
+    * The product detail page has 2 column format that changes to a full width layout for mobile devices. Reviews are shown as 2 per row before adding another row with all odd number reviews being aligned in the center.
+
+* Profile
+
+    * The profile page has a 2 column layout for larger devices which stacks and goes full width for tablets and mobile devices.
+
+* Wishlist
+
+    * This page has a 1 column row layout for large devices.  The layout for tablets changes to a 2 column layout with the product image on the left and all other options on the right. For mobile devices all sections stack with the product image a the top.
+
+* Shopping Bag
+
+    * The shopping bag has a single row layout for each product and another for the costs and buttons underneath. This is the same for tablets as well. For mobile devices the information stacks but the order costs and buttons are now stacked ontop of the product image, followed by the product information.
+
+* Checkout
+
+    * The checkout page has a 2 column layout with the delivery information on the left and order summary on the right. This changes to a stacked layout with the order summary ontop.
+
+* Checkout Success
+
+    * The checkout success page has a 50% width column aligned left for larger devices which contains the order information.  For tablets and mobile devices this extends to a full width container.
+
+* Authentication Pages (Allauth Templates)
+
+    * The authentication pages (login, logout, register etc.) all have their forms aligned to the left in a 50% width column. This extends to full width for mobile devices.
+
+* Footer
+
+    * The layout of the footer remains the same for all devices, with all the social icons and copyright centered.
+
+
+
 
 # Features
 

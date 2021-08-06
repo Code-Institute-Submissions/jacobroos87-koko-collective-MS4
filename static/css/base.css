@@ -615,7 +615,7 @@ a.category-badge>span.badge:hover {
     }
 
     #logo-img {
-        height: 60px;
+        height: 115px;
     }
 
     .menu .menuContent {
@@ -627,6 +627,9 @@ a.category-badge>span.badge:hover {
     .header-container {
         padding-top: 164px;
     }
+    #logo-img {
+        height: 60px;
+    }
 }
 
 @media (max-width: 320px) {
@@ -636,6 +639,9 @@ a.category-badge>span.badge:hover {
 
     .delivery-banner p {
         font-size: 14px;
+    }
+    #logo-img {
+        height: 60px;
     }
 }
 

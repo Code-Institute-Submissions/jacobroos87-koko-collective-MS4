@@ -1,7 +1,11 @@
 # KOKO Collective
-## Milestone Project 4 by Jacob Roos
+## Code Institute MS4 - Jacob Roos
 
-A live version of the website is available [here.]()
+<hr>
+
+![Desktop](documentation/images/koko-homepage.jpg)
+
+A live version of the website is available [HERE](https://koko-collective.herokuapp.com/).
 
 Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas and Waste Bag Dispensers.  The business is focussed around using recycled materials and ethical production processes.  The site allows users to purchase items, register and create their own account with order history and delivery address information.  Once a user is logged in they can review products and also add items to a wishlist which can then be transferred to their shopping bag. Admin users have access to "Product Management" which allows the addition of new products and once in the product detail section, these items can be edited or deleted.  The site is very colourful with intuitive navigation and informative feedback via notifications to ensure the best user experience.
 
@@ -86,14 +90,80 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 # Strategy and Scope
 ## UX
+<hr>
 
 ### Business Objectives
 
-
+* The main objective of KOKO collective is to provide a platform that enables the purchase of eco-friendly pet accessories.
+* Users should have a friendly, colourful experience with simple navigation and informative feedback.
+* The ability to save products to a wishlist for later purchase should also be provided for the customers that might just be browsing.  This then gives more opportunity for targetted marketing based on the users saved items.
+* Building confidence in the listed products should also be promoted with a review system where customers can give their personal feedback for other users to view.
+* Social Media links will also be added to the footer of the website to allow visitors to easily navigate to the KOKO Collective channels.
 
 ### User Objectives
 
-### User Stories
+* Users would be on the site to purchase items and to explore the brand ethos to compare to competitors.
+* Users would want to be able to read more about the company and its manufacturing processes and materials used to justify their eco-friendly purchase.
+* Users might also want to create a profile that saves delivery information and order history.
+* Users might also want leave reviews on products they've purchased to help support the brand and it's ethos.
+
+## User Stories
+<hr>
+
+### Viewing and Navigation:
+| ID | As a... | I want to be able to... | So that I can... |
+|----|:--------|:------------------------|:-----------------|
+1| Shopper| View a list of products available | Browse and select items to purchase |
+2| Shopper | View individual product details | View extra images and product information |
+3| Shopper | Easily see featured items and promotions | Take advantage of savings and newest products |
+4| Shopper | Easily view the total of my shopping bag | Avoid spending to much and stay within my budget |
+5| Shopper | See reviews and an average rating of each product | Better judge my purchase based on product feedback |
+
+### Registration and User Accounts
+| ID | As a... | I want to be able to... | So that I can... |
+|----|:--------|:------------------------|:-----------------|
+6| Site User | Easily register for an account | Have personal account and view my information |
+7| Site User | Easily Login or Logout | Access my profile and wishlist information |
+8| Site User | Easily Recover my password incase I forget it | Recover access to my account |
+9| Site User | Receive an email confirmation after registering | Verify my registration was a success |
+10| Site User | Have a personalized user profile | View my order history and Update my payment information |
+
+### Registered User Extra Functionality
+| ID | As a... | I want to be able to... | So that I can... |
+|----|:--------|:------------------------|:-----------------|
+11| Registered User | Add my own review for a product | Inform other users to the quality of the product |
+12| Registered User | Edit/Update my review | Correct any potential mistakes or a change of opinion |
+13| Registered User | Delete my review | Remove it from the site if I feel it's no longer relevant |
+14| Registered User | Add products to my wishlist | View them at a later date |
+15| Registered User | Transfer items from my wishlist to my shopping bag | Quickly purchase the items I saved in my wishlist |
+16| Registered User | Remove items from my wishlist | Keep only the items I'm currently interested saved and remove others I'm no longer interested in |
+17| Registered User | Clear out my wishlist | Quickly give myself a clean slate to add new items to instead of removing items individually |
+
+### Sorting and Searching
+| ID | As a... | I want to be able to... | So that I can... |
+|----|:--------|:------------------------|:-----------------|
+18| Shopper | Sort the list of available products | Easily find the products I want, by price, category or rating |
+19| Shopper | Sort a specific category of products | Find the best priced or rated products in a specific category or sort them by name |
+20| Shopper | Search for a product by name or description | Find a specific product I'd like to purchase |
+21| Shopper | Easily see my search query and the number of results | To quickly be able to decide if the product I want is available |
+
+### Purchasing and Checkout
+| ID | As a... | I want to be able to... | So that I can... |
+|----|:--------|:------------------------|:-----------------|
+22| Shopper | Easily select the size and quantity of a product when purchasing | Ensure I don't accidently selected the wrong amount or size |
+23| Shopper | View items in my bag to be purchased | Identify the total cost of my purchase and all the items I will receive |
+24| Shopper | Adjust the quantity of individual items in my bag | Easily make changes to my purchase before checkout |
+25| Shopper | Easily enter my payment information | Checkout quickly with no hassles |
+26| Shopper | Feel my personal and payment information is safe and secure | Confidently provide the needed information to make a purchase |
+27| Shopper | View an order confirmation after checkout | Verify that I haven't made any mistakes |
+28| Shopper | Recieve an email after checkout with my order details | Keep the confirmation of what I've purchased for my records |
+
+### Admin and Store Management
+| ID | As a... | I want to be able to... | So that I can... |
+|----|:--------|:------------------------|:-----------------|
+29| Store Owner | Add a product | Add new products to my store |
+30| Store Owner | Edit and update a product | Change product prices, descriptions, images etc. |
+31| Store Owner | Delete a product | Remove items that are no longer for sale |
 
 # Structure
 

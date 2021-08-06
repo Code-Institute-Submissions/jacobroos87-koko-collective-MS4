@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="col-6 p-0 d-none d-md-block">
-            <img src="{% static '../media/desc-img.jpg' %}" class="img-fluid" alt="Clara & Tia">
+            <img src="{{ MEDIA_URL }}desc-img.jpg" class="img-fluid" alt="Clara & Tia">
         </div>
     </div>
 </div>
@@ -71,7 +71,7 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <img src="{% static '../media/banner-img.jpg' %}" class="img-fluid" alt="Clara & Tia">
+        <img src="{{ MEDIA_URL }}banner-img.jpg" class="img-fluid" alt="Clara & Tia">
     </div>
 </div>
 <div class="container-fluid testimonials pt-2">
@@ -188,7 +188,7 @@
         <div class="col-md-4 card-banner-item">
             <div class="card h-100 border-0 m-2">
                 <div class="card-body pb-0">
-                    <img src="{% static '../media/full-set-home.jpg' %}" class="img-fluid" alt="">
+                    <img src="{{ MEDIA_URL }}full-set-home.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
                     <a href="{% url 'products' %}?category=dog_collars,dog_leads,dog_bandanas"
@@ -199,7 +199,7 @@
         <div class="col-md-4 card-banner-item">
             <div class="card h-100 border-0 m-2">
                 <div class="card-body pb-0">
-                    <img src="{% static '../media/flash-bandana.jpg' %}" class="img-fluid" alt="">
+                    <img src="{{ MEDIA_URL }}flash-bandana.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
                     <a href="{% url 'products' %}?category=dog_bandanas"
@@ -210,7 +210,7 @@
         <div class="col-md-4 card-banner-item">
             <div class="card h-100 border-0 m-2">
                 <div class="card-body pb-0">
-                    <img src="{% static '../media/wb-home.jpg' %}" class="img-fluid" alt="">
+                    <img src="{{ MEDIA_URL }}wb-home.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="card-footer pt-0 border-0 text-center">
                     <a href="{% url 'products' %}?category=wb_dispensers"
@@ -228,7 +228,7 @@
             <h2 class="handmade-text text-uppercase">
                 Handmade in India
             </h2>
-            <img src="{% static '../media/handmade-banner.jpg' %}" class="img-fluid w-100" alt="Artisan Sewing">
+            <img src="{{ MEDIA_URL }}handmade-banner.jpg" class="img-fluid w-100" alt="Artisan Sewing">
             <a href="{% url 'about' %}" class="handmade-button btn btn-lg rounded-0 text-uppercase py-2 shadow">
                 Find out more
             </a>

@@ -242,6 +242,10 @@ body {
     padding: 25px;
 }
 
+.error-icon {
+    font-size: clamp(2rem, -0.675rem + 2.666666vw, 3rem);
+}
+
 .desc-header {
     font-size: clamp(1.3rem, -0.675rem + 3.333333vw, 2rem);
     margin-bottom: 20px;

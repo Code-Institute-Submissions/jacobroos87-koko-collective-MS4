@@ -269,7 +269,7 @@ body {
 }
 
 .key-points-div h2 {
-    font-size: clamp(1.3rem, -0.675rem + 2.333333vw, 2rem);
+    font-size: clamp(1.1rem, -0.675rem + 2.333333vw, 2rem);
 }
 
 .testimonials {
@@ -278,8 +278,10 @@ body {
     height: 300px;
 }
 
+
+
 .testimonials h3 {
-    font-size: clamp(1.3rem, -0.675rem + 2.333333vw, 2rem);
+    font-size: clamp(1.1rem, -0.675rem + 2.333333vw, 2rem);
 }
 
 .new-collection {
@@ -338,14 +340,14 @@ i.fa-bars.icon {
     position: absolute;
     bottom: calc(1rem + 2.8vw);
     right: 10%;
-    font-size: clamp(1rem, -0.675rem + 2.333333vw, 1.3rem);
+    font-size: clamp(0.9rem, -0.675rem + 2.333333vw, 1.3rem);
 }
 
 .handmade-text {
-    font-size: clamp(1.8rem, -0.675rem + 3.333333vw, 2.2rem);
+    font-size: clamp(1.4rem, -0.675rem + 3.333333vw, 2.2rem);
     color: white;
     position: absolute;
-    bottom: calc(3.5rem + 3.1vw);
+    bottom: calc(3.3rem + 3vw);
     right: 10%;
     padding: 0px 10px;
     background-color: rgba(0, 0, 0, 0.5);

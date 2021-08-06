@@ -1,6 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from products.models import Product
-from products.models import Category
 
 # Create your views here.
 

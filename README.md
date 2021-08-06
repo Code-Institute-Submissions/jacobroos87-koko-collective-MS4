@@ -372,29 +372,38 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
     * The layout of the footer remains the same for all devices, with all the social icons and copyright centered.
 
 
-
-
 # Features
 
-### Sitewide
+## Sitewide
+<hr>
 
 ### Navbar
+* The navbar is the same for all device sizes and consists of a hamburger menu which triggers an animation and overlay.  The menu items are then aligned in the center of the page.
 
 ### Banner
+* The site has a small banner that's always visible at the top of the site reminding users of the free shipping threshold.
 
 ### Footer
+* The footer has social icons including Facebook, Twitter, Instagram and Pinterest.  All social accounts that would be relevant for a pet accessories business.
 
 ### Homepage
+* The homepage has buttons with various links back to the products page with some filtered.  All buttons have a hover effect and the testimonials have been added with a carousel that the user can scroll but also scrolls automatically.
 
 ### About
+* The about page doesn't have any stand out features as its purpose is to give the user more detailed information on the brand through text and imagery.
 
 ### Products
+* The products page has a searchbox so users can make search queries and there's also a dropdown sort box.  Sorting can be made by Price, Rating, Name and Category. Once a search or sort query has been made a Products Home button appears with the amount of products found.
 
 ### Product Detail
+* The Product Detail page has an image carousel which slides through the product images. The user can also navigate the images. Once a user is logged in each product will have a heart icon attached to it where the user can add it to their wishlist.  This toggles, so the item can be removed if clicked again.  Superusers will also have access to the edit & delete buttons. 
 
 ### Reviews
+* At the bottom of the Product Detail page is the review section where the user can review the item in question. Below the Reviews title is the average rating for the product follow by the "Review Item" button which opens a form in a model with 3 fields: Title, Description and Rating.  Once completed the review is displayed in a box. To the left is the review title, product star rating, the username of the user who posted the review, and the date. To the right is the review description and if the user is logged in two icons will be visible which enables the user to either edit or delete their review.
 
 ### Wishlist
+* 
+
 
 ### Shopping Bag
 

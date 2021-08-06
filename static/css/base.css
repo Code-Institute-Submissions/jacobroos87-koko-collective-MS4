@@ -627,19 +627,18 @@ a.category-badge>span.badge:hover {
     .header-container {
         padding-top: 164px;
     }
-    #logo-img {
-        height: 60px;
-    }
 }
 
 @media (max-width: 320px) {
     #page-container {
         padding-top: 60px;
     }
-
     .delivery-banner p {
         font-size: 14px;
     }
+}
+
+@media (max-width: 500px) {
     #logo-img {
         height: 60px;
     }

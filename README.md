@@ -472,7 +472,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
     * Used to target and manipulate HTML elements
 
 
-### Tools
+## Tools
 * [Gitpod](https://www.gitpod.io) - IDE.
 * [Git](https://git-scm.com/) - Version control.
 * [Github](https://github.com/) - Hosting repository.
@@ -483,37 +483,174 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 * [w3 css validator](https://jigsaw.w3.org/) - CSS code validation.
 * [jshint](https://jshint.com/) - JS code validation.
 
-### Database and Storage
+## Database and Storage
 * [AWS](https://aws.amazon.com/) - Used to store static and media files.
 * [Postgres](https://www.postgresql.org/) - Used to store production database.
 
-### Payments
+## Payments
 * [Stripe](https://stripe.com/) - Used to make payments
 
 # Testing
 
+## All testing has been documented in [TESTING.md](TESTING.md)
+
 # Deployment
 
-### Gitpod
+## Gitpod
+* The site was developed in GitPod and pushed to the following GitHub repository -- [REPO](https://github.com/jacobroos87/koko-collective-MS4) --
+    * The following GIT commands were used:
+        * git status
+            * Used to check the status of files.
+        * git add
+            * To add files ready to commit.
+        * git commit -m 
+            * To commit files.
+        * git push
+            * To push the files to the master branch of the GitHub repo.
 
-### Hosting on Heroku
+## Hosting on Heroku
+* Below is a step by step for the hosting process:
+       
+    1. Set *_debug=False_* in -settings.py- file.
+    2. Create a requirements.txt file using *_pip3 freeze --local > requirements.txt_* in the terminal.  This tells heroku what dependencies the app has to run. 
+    3. Create a Procfile using the *_echo web: python app.py > Procfile_* command in the terminal so Heroku knows which file runs the app.
+        * The KOKO Collective app contained - web: gunicorn koko_collective.wsgi:application
+    4. Create a new Heroku app: **koko-collective** and set its region to Europe.
+    5. Add Postgres plugin (free plan) from the resources tab in the koko-collective app.
+    6. The next step is to add the app environment variables.  This is done by going to the *Reveal Config Vars* section in the settings tab.  The following config variables were added for this project:
+    ![Heroku Config Variables](documentation/images/heroku-config-variables.png)
+    7. Set up a new database in -settings.py-
+        * import dj_database_url
+        * Dump SQlite database to json file using the following command :
+        ```bash
+        python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+        ```
+        * Comment out current 'DATABASES' - replace with the following : 
+       ```bash
+        DATABASES = {
+                'default': dj_database_url.parse("<your Postrgres database URL>")
+            }
+        ```
+    8. Migrate models to Postgres by running :
+        ```bash
+        python3 manage.py makemigrations
+        python3 manage.py migrate
+        ```
+    9. Load the json MySQLlite dump to Postgres :
+        ```bash
+        python3 manage.py loaddata db.json
+        ```
+    10. Replace the code added in step 7 for DATABASES with:
+        ```bash
+        if 'DATABASE_URL' in os.environ:
+            DATABASES = {
+                'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+            }
+        else:
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                }
+            }
+        ```
+    11. Add the hostname of the Heroku app to allowed hosts,
+        * In settings.py:
+        ```bash
+        ALLOWED_HOSTS = ['koko-collective.herokuapp.com', 'localhost']
 
-### Hosting Files using AWS
+    12. Following this you need to ensure that all changes have been pushed to Github, ready to deploy to Heroku.
+
+    13. Next set up automatic deployment by linking the newly created app to the github repository.  This is done by selecting the "Connect to Github" in the deploy menu then adding the repo name into the search field and selecting it for deployment.
+    14. Once this has been done you can *Enable Automatic Deploys* in the deploy section of heroku.
+    15. The master branch is then deployed and the app uploaded.
+    16. Once this is complete you can press the view button under the window to see the deployed site.
+    17. Due to the app being connected to the GitHub repo any code pushed to github will automatically update on the live site.
+
+
+## Hosting Files using AWS
+* An AWS account is needed to be able to host media and static files with AWS.
+* Within AWS the following services are required:
+    * AWS S3 Bucket
+    * Bucket Policy
+    * Group
+    * Access Policy
+    * User
+
+* For more information and a more detailed explanation of the steps undertaken please follow the links below:
+    * Amazon Simple Storage Service: https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html
+    * Connecting Django to S3: https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
 
 ### Cloning
+To run this code locally you can simply clone this repo into your chioce of IDE.
+1. Ensure that you have Python3, Pip3 and Git installed, and you have a Stripe account set up to get your testing keys.
+2. In your terminal type in the following command:
+``` bash
+    git clone https://github.com/jacobroos87/koko-collective-MS4.git
+```
+3. Press enter to start the cloning process.
+4. To separate from this repo enter the following command:
+```bash 
+    git remote rm origin 
+```
+5. Install the packages in requirements.txt:
+``` bash
+    pip3 install -r requirements.txt
+``` 
+6. Create a -env.py- file and add it to the .gitignore file
+7. Add the following code to your env file:
+```bash
+    import os
+    os.environ["DEVELOPMENT"] = "True"
+    os.environ["SECRET_KEY"] = "<Your Key>"
+    os.environ["STRIPE_PUBLIC_KEY"] = "<Your Key>"
+    os.environ["STRIPE_SECRET_KEY"] = "<Your Key>"
+    os.environ["STRIPE_WH_SECRET"] = "<Your Key>"
+```
+8. Migrate the new models to create the SQlite database:
+``` bash
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+```
+You can also add **--dry-run** onto the end of the makemigrations command to see what will be migrated before commiting.
+9. Create a superuser to be able to access the app admin interface:
+```bash
+    python3 manage.py createsuperuser
+```
+10. Now run the app server:
+```bash
+    python3 manage.py runserver
+```
+11. Bare in mind no product information will be cloned so it will be all the models and functionality.  You can then add products through either the admin interface or once logged in as a superuser and heading to the 'Product Management' page.
+
+12. To access the site admin page just at /admin onto the end of your running server URL. Log in using your superuser details.
+
+For more information on using git clone you can click [HERE](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+
+[Back to top](#table-of-contents)
 
 # Credits
+## Content
+* All content on the site was designed and written by myself.
 
-### Content
+## Media
+* All images were taken and edited by either myself or my partner. Who has given permission for me to use her images.
 
-### Media
+## Acknowledgements
 
-#### Images
+I've had excellent support from my Mentor Dick Vlaanderen and also from the code institute tutors.
+The slack community has also been very helpful for feedback and support.
 
-### Acknowledgements
-
-### Online and Physical
-
+## Online and Physical
 ### Websites
+* [Stack Overflow](https://stackoverflow.com/)
+* [W3schools](https://www.w3schools.com/)
+* [CSS-Tricks](https://css-tricks.com/)
+* [Full Stack Python](https://www.fullstackpython.com/)
+* [Django Documentation](https://docs.djangoproject.com/)
 
 ### Books
+* Head First HTML & CSS - *O'reilly*
+* Head First Javascript Programming - *O'reilly*
+* Learn Python In One Day - *Jamie Chan*
+* django 3..2..1..Takeoff! - *Bryam Loaiza*

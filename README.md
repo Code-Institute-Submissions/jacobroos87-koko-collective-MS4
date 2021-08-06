@@ -19,7 +19,6 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 </details>
 
 **<details><summary>Structure</summary>**
-* [Design Process](#design-process)
 * [Page Structure](#page-structure)
 * [Page Summaries](#page-summaries)
 * [Django Apps & Packages](#django-apps-and-packages)
@@ -167,15 +166,106 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 # Structure
 
-### Design Process
-
 ### Page Structure
 
-### Page Summaries
+* The site has a conventional layout that has many uniform elements that are re-used to create a strong identity. Portions of the site design were coded from the ground up, but some elements were inspired by the Code Institute 'Boutique-Ado' mini-project.
 
-### Django Apps and Packages
+* The structure and theme were also inspired by doing extensive market research within the pet accessories industry.  Notes were made on features and layouts that had the best UX, with some of these being reflected in the KOKO collective site. 
 
-### Database Design and Structure
+* ### The following pages were decided upon:
+    * Home Page
+    * About
+    * Products (which filters in the navbar)
+    * Edit Product
+    * Add Product
+    * Product Detail (which includes the reviews)
+    * Profile
+    * Wishlist
+    * Shopping Bag
+    * Checkout
+    * Checkout Success
+    * Authentication Pages (Allauth Templates)
+<hr>
+
+* ### The Navbar has the following links:
+    * Home
+    * About
+    * Shop
+        * All Products
+        * Dog Collars
+        * Dog Leads
+        * Dog Bandanas
+        * Waste Bag Dispensers
+    * My Account (Not Logged in/Registered)
+        * Login
+        * Register
+    * My Account (Logged in)
+        * Product Management (Superuser only)
+        * My Profile
+        * Wishlist
+        * Logout
+        * Shopping Bag (Bag Icon)
+
+## Page Summaries
+<hr>
+
+### Home Page
+
+* The home page will have a colourful hero-image with the brand motto and a shop now button. 
+* Below this will be a small section giving a larger summary of what the products are made of and brand ethos.
+* Underneath this will be a 3 row section containing key information, some more imagery and testimonials (in that order).
+* Following this will be a section of featured items with a view all button underneath.
+* Next will be a 3 column, card layout with images. Each image will have a button attached which filters the products accordingly and takes the user to the products page.
+* The last section before the footer will have a simple banner style image that has some text and a find out more button which navigates to the about page.
+
+### About
+
+* The about page will have information on the business manufacturing processes and ethical practises.  The layout will consist of 3 sections containing text and an image.
+
+### Products (which filters in the navbar)
+
+* The products page will dynamically show products from the database which can then be filtered.
+
+### Add Product
+
+* This page will contain a simple form where the admin user can enter all relevant information and upload images for a new product.
+
+### Edit Product
+
+* The edit product page will contain the same form as the add product page but will also display the current product images which can be updated.
+
+### Product Detail (which includes the reviews)
+
+* The product detail page will display all the extended information for a specific product.  Here the admin user will be able to either edit or delete the product.  Users will also be able to either add the product to their shopping bag or wishlist (if logged in)
+
+### Profile
+
+* The profile page will have the users saved delivery information or will be a blank form that can be updated and saved for future purchases.  The user order history will also be displayed.
+
+### Wishlist
+
+* This page is similar to the shopping bag but with some extra icons allowing the user to either delete an item from the list or add it to their bag.  There will also be a button to clear the wishlist altogether.
+
+### Shopping Bag
+
+* The shopping bag will have a table layout but also include a dynamic subtotal.  Users will be able to remove and update quantities for items in their bag.
+
+### Checkout
+
+* This page will have 2 sections. Firstly the delivery information which will be populated with the user's saved information or empty if there isn't any information in the database. The other section will have a short order summary.
+
+### Checkout Success
+
+* The checkout success will thank the user for their purchase and show a details order summary.
+
+### Authentication Pages (Allauth Templates)
+
+* The authentication pages (login, logout, register etc.) are all templates provided by allauth and have been styled to suite the theme of the overall site.
+
+
+## Django Apps and Packages
+
+## Database Design and Structure
 
 # Surface
 

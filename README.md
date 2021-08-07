@@ -9,6 +9,7 @@ A live version of the website is available [HERE](https://koko-collective.heroku
 
 Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas and Waste Bag Dispensers.  The business is focussed around using recycled materials and ethical production processes.  The site allows users to purchase items, register and create their own account with order history and delivery address information.  Once a user is logged in they can review products and also add items to a wishlist which can then be transferred to their shopping bag. Admin users have access to "Product Management" which allows the addition of new products and once in the product detail section, these items can be edited or deleted.  The site is very colourful with intuitive navigation and informative feedback via notifications to ensure the best user experience.
 
+
 # Table of Contents
 
 **<details><summary>Strategy & Scope</summary>**
@@ -306,10 +307,52 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 # Skeleton
 
 ## Wireframes
+* Wireframes were designed using Figma
+    * ### [Figma Wireframes](https://www.figma.com/file/CpbipeI8HyGvvo1unTKUb3/KOKO-COLLECTIVE?node-id=0%3A1)
+
+## Home
+<hr>
+
+![Home Page](documentation/images/koko-home.jpg)
+<hr>
+
+## About
+![About Page](documentation/images/koko-about.jpg)
+<hr>
+
+## Products
+![Products Page](documentation/images/koko-products.jpg)
+<hr>
+
+## Product Detail
+![Product Detail Page](documentation/images/koko-product-detail.jpg)
+<hr>
+
+## Profile
+![Profile Page](documentation/images/koko-profile.jpg)
+<hr>
+
+## Wishlist
+![Wishlist Page](documentation/images/koko-wishlist.jpg)
 <hr>
 
 ## Wireframe and Final Project Differences
 <hr>
+
+* ### Navbar
+    * The navbar and top banner are the same as the production version however the two icons to the upper right of the mockup were swapped for a user icon and giving access to the 'My Account' features instead of an Instagram link. The bag also has an amount underneath in production.
+* ### Home
+    * The home page is very similar to the wireframe with only a few small sizing differences and alignment changes.  Also the icons used are different as they're supplied by fontawesome.
+* ### About
+    * The about page has the same layout except i've added a horizontal line after each section in the production version to improve UX
+* ### Products
+    * The products page is pretty much identical with some alignment changes and font decorations.  There is also the Product Home button on the production version once a search query is made.
+* ### Product Detail
+    * The product detail page is also very similar.  The only main changes are to the reviews section and placement of the 'REVIEW ITEM' button and also the average rating.  This is under the horizontal rule in the production version.
+* ### Profile
+    * The user profile page is once again very similar but has more detailed information in the order history section. Including the date and time the order was made and the items by name (including size and quantity.
+* ### Wishlist
+    * The Wishlist page is very similar however the extra product information is also displayed next to the product image including the name, rating and SKU values.
 
 ## Responsive Page Design
 <hr>

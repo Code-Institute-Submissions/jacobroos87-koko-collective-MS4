@@ -42,24 +42,22 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 **<details><summary>Features</summary>**
 
-* [Sitewide](#sitewide)
-    * [Navbar](#nav-bar)
-    * [Banner](#banner)
-    * [Footer](#footer)
+* [Navbar](#nav-bar)
+* [Banner](#banner)
+* [Footer](#footer)
 * [Homepage](#homepage)
 * [About](#about)
 * [Products](#products)
-    * [Product Detail](#product-detail)
-    * [Reviews](#reviews)
+* [Product Detail](#product-detail)
+* [Reviews](#reviews)
 * [Wishlist](#wishlist)
 * [Shopping Bag](#shopping-bag)
 * [Checkout](#checkout)
-    * [Checkout Success](#checkout-success)
+* [Checkout Success](#checkout-success)
 * [Profile](#profile)
-* [Product Management](#Product-management)
-    * [Add Product](#add-product)
-    * [Edit Product](#edit-product)
-    * [Authentication](#authentication)
+* [Add Product](#add-product)
+* [Edit Product](#edit-product)
+* [Authentication](#authentication)
 * [Future Features](#future-features)
 
 </details>
@@ -87,6 +85,8 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
     * [Books](#books)
 
 </details>
+
+<br>
 
 # Strategy and Scope
 ## UX
@@ -284,7 +284,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 * storages
 * allauth
 
-## Database Design and Structure
+# Database Design and Structure
 
 ### The database structure consists of 8 models across 7 apps
 ### The apps with database information are listed below.
@@ -350,6 +350,64 @@ class Product(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now_add=True)
 ```
+* Wishlist App
+    * This is a simple model storing the user and product information:
+``` bash
+    class Wishlist(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, blank=True)
+```
+* Checkout App
+    * This app has 2 models to handle order information which saves product, user and address information:
+``` bash
+    class Order(models.Model):
+
+    order_number = models.CharField(max_length=40, null=False, editable=False)
+    user_profile = models.ForeignKey(
+        UserProfile, on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='orders')
+    full_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
+    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    street_address1 = models.CharField(max_length=80, null=False, blank=False)
+    street_address2 = models.CharField(max_length=80, null=True, blank=True)
+    county = models.CharField(max_length=80, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    delivery_cost = models.DecimalField(
+        max_digits=6, decimal_places=2, null=False, default=0)
+    order_total = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0)
+    grand_total = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default='')
+```
+``` bash
+    class OrderLineItem(models.Model):
+
+    order = models.ForeignKey(
+        Order, null=False, blank=False,
+        on_delete=models.CASCADE, related_name='lineitems')
+    product = models.ForeignKey(
+        Product, null=False, blank=False, on_delete=models.CASCADE)
+    product_size = models.CharField(
+        max_length=4, null=True, blank=True)  # S/M, M/L
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(
+        max_digits=20, decimal_places=2, null=False,
+        blank=False, editable=False)
+```
+
+### The Database Schema is detailed below using the graphviz package:
+<hr>
+
+![Database Schema](documentation/images/koko-database-schema.png)
+
 [Back to top](#table-of-contents)
 # Surface
 
@@ -376,31 +434,32 @@ class Product(models.Model):
 * Wireframes were designed using Figma
     * ### [Figma Wireframes](https://www.figma.com/file/CpbipeI8HyGvvo1unTKUb3/KOKO-COLLECTIVE?node-id=0%3A1)
 
-## Home
+## Home Mockup
 <hr>
 
 ![Home Page](documentation/images/koko-home.jpg)
 <hr>
 
-## About
+## About Mockup
 ![About Page](documentation/images/koko-about.jpg)
 <hr>
 
-## Products
+## Products Mockup
 ![Products Page](documentation/images/koko-products.jpg)
 <hr>
 
-## Product Detail
+## Product Detail Mockup
 ![Product Detail Page](documentation/images/koko-product-detail.jpg)
 <hr>
 
-## Profile
+## Profile Mockup
 ![Profile Page](documentation/images/koko-profile.jpg)
 <hr>
 
-## Wishlist
+## Wishlist Mockup
 ![Wishlist Page](documentation/images/koko-wishlist.jpg)
 <hr>
+
 [Back to top](#table-of-contents)
 ## Wireframe and Final Project Differences
 <hr>
@@ -482,9 +541,6 @@ class Product(models.Model):
 
 [Back to top](#table-of-contents)
 # Features
-
-## Sitewide
-<hr>
 
 ### Navbar
 * The navbar is the same for all device sizes and consists of a hamburger menu which triggers an animation and overlay.  The menu items are then aligned in the center of the page.

@@ -19,7 +19,7 @@ def add_to_wishlist(request, product_id):
     if product not in wishlist.products.all():
         wishlist.products.add(product)
         messages.info(request,
-                        f"{product.name} has been added to your wishlist.")
+                      f"{product.name} has been added to your wishlist.")
     else:
         messages.error(request,
                        "Error, you already have this item in your wishlist!")
@@ -35,7 +35,7 @@ def remove_wishlist_item(request, product_id):
     if product in wishlist.products.all():
         wishlist.products.remove(product)
         messages.info(request,
-                        f"Success! {product.name} has been removed from your wishlist!")
+                      f"Success! {product.name} has been removed from your wishlist!")
     else:
         messages.error(request, "Error! Please try again")
 
@@ -51,7 +51,7 @@ def clear_wishlist(request):
     try:
         wishlist.products.clear()
         messages.info(request,
-                    f"Success! Your wishlist has been cleared!")
+                      "Success! Your wishlist has been cleared!")
         return redirect(reverse("view_wishlist"))
     except Exception as e:
         messages.error(request, f"Error clearing wishlist {e}")

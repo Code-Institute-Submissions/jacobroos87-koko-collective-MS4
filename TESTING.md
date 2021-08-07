@@ -6,8 +6,6 @@
 3. [Automated Testing](#automated-testing)
 4. [User Stories](#user-stories)
 5. [User Testing](#user-testing)
-    * [My Mentor](#my-mentor)
-    * [User review](#user-review)
 
 ### Testing was done using the following browsers:
 
@@ -145,7 +143,15 @@
 * Verify payment success on Stripe - ✅
 ![Payment Success](documentation/images/payment-success.png)
 
+# Testing Errors
 
+* Verify Searching by description - ❌ 
+![Description Searching Error](documentation/images/searching-error.png)
+
+### This error was fixed by adding the below snippet to the all_products view. 
+``` bash
+| Q(description__icontains=query)
+```
 # Devtools
 
 Chrome Devtools was used during the development process and used extensively for testing. All devices were checked for functionality and visual errors. It was also used to target certain elements of the site to check changes before adding them to the code.

@@ -36,8 +36,9 @@ def remove_wishlist_item(request, product_id):
 
     if product in wishlist.products.all():
         wishlist.products.remove(product)
-        messages.info(request,
-                      f"Success! {product.name} has been removed from your wishlist!")
+        messages.info(
+            request,
+            f"Success! {product.name} has been removed from your wishlist!")
     else:
         messages.error(request, "Error! Please try again")
 

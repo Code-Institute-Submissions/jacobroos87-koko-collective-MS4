@@ -43,7 +43,8 @@ def add_review(request, product_id):
             messages.info(request, 'Success! Your review has been added!')
 
         else:
-            messages.error(request, 'Error! Make sure the form information is valid.')
+            messages.error(
+                request, 'Error! Make sure the form information is valid.')
 
     return redirect(reverse('product_detail', args=(product_id,)))
 
@@ -88,7 +89,7 @@ def delete_review(request, review_id):
         product.save()
 
         messages.info(request,
-                         "Your review has been deleted")
+                      "Your review has been deleted")
 
     except Exception as e:
         messages.error(request, "We couldn't delete your review because "

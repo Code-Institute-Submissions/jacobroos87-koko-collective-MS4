@@ -1,6 +1,6 @@
 from django import forms
 from .widgets import CustomClearableFileInput
-from .models import Product, Category
+from .models import Product, Category, ProductImage
 
 
 # Adding a product form
@@ -9,11 +9,12 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['category', 'sku', 'name', 'description',
-                  'has_sizes', 'price', 'avg_rating', 'is_featured',
-                  'main_image']
+                  'has_sizes', 'price', 'avg_rating',
+                  'is_featured', 'main_image']
 
-    main_image = forms.ImageField(
-        label='Main Image', required=True, widget=CustomClearableFileInput)
+    main_image = forms.ImageField(label='Main Image',
+                                  required=True,
+                                  widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -29,11 +30,11 @@ class ProductForm(forms.ModelForm):
 class ImageForm(ProductForm):
 
     class Meta(ProductForm.Meta):
-        fields = ProductForm.Meta.fields + ['images', ]
+        fields = ProductForm.Meta.fields + ['images',]
 
-    images = forms.FileField(label='Extra Images', required=False,
-                             widget=CustomClearableFileInput(
-                                attrs={'multiple': True}))
+    images = forms.FileField(
+        label='Extra Images', required=False,
+        widget=CustomClearableFileInput(attrs={'multiple': True}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

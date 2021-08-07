@@ -45,6 +45,7 @@
 * Verify the testimonial carousel works on all devices - ✅ 
 * Verify all relevant text is responsive - ✅ 
 * Verify that only products with is_featured set to True are loaded in the featured section - ✅ 
+
 ![New Collection Section](documentation/images/is-featured.png)
 ![Is Featured Admin](documentation/images/is-featured-admin.png)
 
@@ -57,8 +58,10 @@
 * Verify only waste bag dispensers display for Waste Bag Dispensers link - ✅
 * Verify Searching by name - ✅
 * Verify Searching by description - ❌ 
+
 ![Description Searching Error](documentation/images/searching-error.png)
 * Verify sorting by name - ✅
+
 * Verify sorting by catergory - ✅
 * Verify sorting by price - ✅
 * Verify image navigation to product detail - ✅
@@ -71,28 +74,41 @@
 * Verify the reviews for the item are displayed below - ✅
 * Verify the average rating and amount of reviews display - ✅
 * Verify the Edit, Delete buttons display for the admin user - ✅
+
 ![Edit & Delete Buttons](documentation/images/edit-delete-admin.png)
+
 * Verify the wishlist icon displays when a user is logged in (see above) - ✅
 * Verify the item is added to the wishlist upon clicking the heart button - ✅
 * Verify the info alert when an item is added to the wishlist - ✅
+
 ![Add to Wishlist](documentation/images/add-to-wishlist.png)
+
 * Verify the item is removed from the wishlist if clicked again - ✅
+
 ![Remove From Wishlist](documentation/images/remove-from-wishlist.png)
+
 * Verify item is added to bag when clicking the "Add To Bag" button - ✅
+
 ![Add To Bag](documentation/images/add-to-bag.png)
+
 * Verify edit button navigated to edit product page - ✅
 * Verify delete button activates model check - ✅
+
 ![Delete Modal](documentation/images/delete-modal.png)
+
 * Verify Review Item button activates model with form - ✅
 * Verify edit and delete buttons only display on user specific review - ✅
 * Verify edit button displays prefilled form in modal - ✅
+
 ![Edit Review Modal](documentation/images/edit-review-modal.png)
 
 ## Profile
 * Verify profile page loads responsively on all devices - ✅
 * Verify Delivery information is show for registered user - ✅
 * Verify Order History is populated with previous orders and all information is correct - ✅
+
 ![Order History](documentation/images/order-history.png)
+
 * Verify delivery information updates when changed and saved - ✅
 * Verify order number links to past order with notification - ✅
 
@@ -115,7 +131,9 @@
 * Verify Product images are displayed correctly - ✅
 * Verify Product information is correct - ✅
 * Verify all totals are adding correctly - ✅
+
 ![Bag Totals](documentation/images/bag-totals.png)
+
 * Verify items quantities can be updated - ✅
 * Verify items can be removed - ✅
 * Verify buttons navigate to appropriate urls - ✅
@@ -124,10 +142,14 @@
 * Verify checkout page loads responsively on all devices - ✅
 * Verify Delivery information and email are prefilled for active user - ✅
 * Verify Order summary is correct and totals are calculated - ✅
+
 ![Order Summary](documentation/images/order-summary.png)
+
 * Verify Payment input works correctly - ✅
 * Verify Payment input displays error message - ✅
+
 ![Payment Input Error](documentation/images/payment-input-error.png)
+
 * Verify Adjust Bag button redirect to bag - ✅
 * Verify user directed to Checkout Success on completing order - ✅
 
@@ -135,17 +157,21 @@
 * Verify Checkout Success page loads responsively - ✅
 * Verify Order information is correct - ✅
 * Verify Order Success message - ✅
+
 ![Order Success](documentation/images/order-success.png)
+
 * Verify Bag clears - ✅
 * Verify Order is added to profile - ✅
 
 ## Transaction
 * Verify payment success on Stripe - ✅
+
 ![Payment Success](documentation/images/payment-success.png)
 
 # Testing Errors
 
-* Verify Searching by description - ❌ 
+* Verify Searching by description - ❌
+
 ![Description Searching Error](documentation/images/searching-error.png)
 
 ### This error was fixed by adding the below snippet to the all_products view. 
@@ -168,7 +194,7 @@ The console was used to support the development process of the website JavaScrip
 
 * JS was validated using [jshint JS Markup Validation Service](https://jshint.com/)
 
-[Back to top](#table-of-contents)
+[Back to top](#contents)
 
 # User Stories
 

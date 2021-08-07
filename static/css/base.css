@@ -283,7 +283,7 @@ body {
 }
 
 .key-points-div h2 {
-    font-size: clamp(1.1rem, -0.675rem + 2.333333vw, 2rem);
+    font-size: clamp(1rem, -0.675rem + 2.333333vw, 2rem);
 }
 
 .testimonials {

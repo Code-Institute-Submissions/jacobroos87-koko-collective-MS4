@@ -3,7 +3,7 @@ from products.models import Product
 
 # Create your views here.
 
-
+# Renders Home Page with products in template
 def index(request):
     products = Product.objects.all()
 

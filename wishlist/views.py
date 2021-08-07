@@ -13,6 +13,7 @@ def view_wishlist(request):
 
 @login_required
 def add_to_wishlist(request, product_id):
+    """ Adds product to wishlist """
     product = get_object_or_404(Product, pk=product_id)
     wishlist = get_object_or_404(Wishlist, user=request.user)
 
@@ -28,6 +29,7 @@ def add_to_wishlist(request, product_id):
 
 @login_required
 def remove_wishlist_item(request, product_id):
+    """ Removes product from wishlist """
     product = get_object_or_404(Product, pk=product_id)
     wishlist = get_object_or_404(Wishlist, user=request.user)
     origin = request.GET.get('origin')
@@ -47,6 +49,7 @@ def remove_wishlist_item(request, product_id):
 
 @login_required
 def clear_wishlist(request):
+    """ Clears all products from wishlist """
     wishlist = get_object_or_404(Wishlist, user=request.user)
     try:
         wishlist.products.clear()

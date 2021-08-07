@@ -3,6 +3,7 @@ from .widgets import CustomClearableFileInput
 from .models import Product, Category, ProductImage
 
 
+# Adding a product form
 class ProductForm(forms.ModelForm):
 
     class Meta:
@@ -21,6 +22,7 @@ class ProductForm(forms.ModelForm):
             field.widget.attrs['class'] = 'rounded-0'
 
 
+# Form to handle extra images
 class ImageForm(ProductForm):
 
     class Meta(ProductForm.Meta):

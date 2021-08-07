@@ -20,7 +20,7 @@
                 <hr>
             </div>
         </div>
-
+        <!-- Edit Product Form -->
         <div class="row">
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
@@ -30,7 +30,7 @@
                     {% endfor %}
                     <div class="form-group">
                         <div class="row">
-                            
+                        <!-- Image thumbnails -->
                         {% for image in current_images %}
                             <div class="col-12 col-lg-4">
                                 <img src="{{ image.extra_images.url }}" class="img-fluid rounded img-thumbnail" alt="{{ image.name }}">

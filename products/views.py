@@ -104,6 +104,7 @@ def add_product(request):
 
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
+        # Image files
         files = request.FILES.getlist('images')
 
         if form.is_valid():
@@ -120,7 +121,7 @@ def add_product(request):
                 category=category, sku=sku, name=name, description=description,
                 has_sizes=has_sizes, price=price, avg_rating=avg_rating,
                 is_featured=is_featured, main_image=main_image)
-
+            # Add new images to the DB
             for f in files:
                 ProductImage.objects.create(
                     product=product_object, extra_images=f)
@@ -153,6 +154,7 @@ def edit_product(request, product_id):
     if request.method == 'POST':
 
         form = ProductForm(request.POST, request.FILES, instance=product)
+        # Additional images
         files = request.FILES.getlist('images')
 
         if form.is_valid():
@@ -171,8 +173,6 @@ def edit_product(request, product_id):
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
-
-    print(current_images)
 
     template = 'products/edit_product.html'
     context = {

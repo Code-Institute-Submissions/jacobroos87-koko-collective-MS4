@@ -74,6 +74,7 @@
         <img src="{{ MEDIA_URL }}banner-img.jpg" class="img-fluid" alt="Clara & Tia">
     </div>
 </div>
+<!-- Testimonials -->
 <div class="container-fluid testimonials pt-2">
     <div class="container">
         <div id="myCarousel" class="carousel p-2 slide" data-ride="carousel" data-interval="8000">
@@ -118,6 +119,7 @@
         <div class="product-container col-8 offset-2">
             <div class="row mt-1 mb-2"></div>
             <div class="row">
+                <!-- Loops out featured products for homepage -->
                 {% for product in products %}
                 {% if product.is_featured %}
                 <div class="col-sm-6 col-md-6 col-lg-4">
@@ -183,6 +185,7 @@
         </div>
     </div>
 </div>
+<!-- Section with links to products page prefiltered -->
 <div class="container-fluid banner-links pb-4">
     <div class="row">
         <div class="col-md-4 card-banner-item">

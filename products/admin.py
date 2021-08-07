@@ -3,12 +3,12 @@ from .models import Product, Category, ProductImage
 
 # Register your models here.
 
-
+# Adds extra images
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 1
 
-
+# Adds certain product info to admin
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline, ]
 

@@ -15,7 +15,7 @@ def add_review(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     review_form = ReviewForm()
-
+    # Get info from form
     review_submission = {
         'title': request.POST['title'],
         'description': request.POST['description'],
@@ -23,7 +23,7 @@ def add_review(request, product_id):
     }
 
     review_form = ReviewForm(review_submission)
-
+    # Prevents a user from reviewing the same product twice
     existing_review = Reviews.objects.filter(user=user, product=product)
     if existing_review:
         messages.error(request, 'You have already reviewed this product')
@@ -34,7 +34,7 @@ def add_review(request, product_id):
             review.user = user
             review.product = product
             review.save()
-
+            # Update average rating
             reviews = Reviews.objects.filter(product=product)
             avg_rating = reviews.aggregate(Avg('rating'))['rating__avg']
             product.avg_rating = Decimal(avg_rating)

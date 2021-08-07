@@ -1,7 +1,9 @@
+<!-- Quantity Form to adjust bag -->
 <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
     {% csrf_token %}
     <div class="form-group">
         <div class="input-group">
+            <!-- Decrement Quantity -->
             <div class="input-group-prepend">
                 <button class="decrement-qty btn btn-sm btn-black rounded-0" 
                     data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
@@ -14,6 +16,7 @@
                 name="quantity" value="{{ item.quantity }}" min="1" max="99"
                 data-item_id="{{ item.item_id }}"
                 id="id_qty_{{ item.item_id }}">
+            <!-- Increment Quantity -->
             <div class="input-group-append">
                 <button class="increment-qty btn btn-sm btn-black rounded-0"
                     data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">

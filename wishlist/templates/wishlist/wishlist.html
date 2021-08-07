@@ -19,12 +19,13 @@
             <hr>
         </div>
     </div>
-
+    <!-- Wishlist Display for smaller devices -->
     <div class="row">
         <div class="col">
             {% if request.user.is_authenticated %}
             {% if wishlist_items %}
             <div class="d-block d-lg-none">
+                <!-- Display all items in the user wishlist -->
                 {% for item in wishlist_items %}
                 <div class="row">
                     <div class="col-12 col-sm-6 mb-2">
@@ -48,6 +49,7 @@
                         <p class="my-0 small text-muted">
                             SKU: {{ item.sku|upper }}
                         </p>
+                        <!-- Form to submit the data when adding to bag -->
                         <form class="form" action="{% url 'add_to_bag' item.id %}" method="POST">
                             {% csrf_token %}
                             <div class="py-3">
@@ -86,6 +88,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Removes Withlist item -->
                             <div class="py-1">
                                 <a href="{% url 'remove_wishlist_item' item.id %}?origin=wishlist"
                                     class="btn btn-outline-grey rounded-0"><i class="fas fa-trash-alt icon"></i>
@@ -114,6 +117,7 @@
                     </a>
                 </div>
             </div>
+            <!-- Wishlist display for larger devices -->
             <div class="table-responsive rounded d-none d-lg-block">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">

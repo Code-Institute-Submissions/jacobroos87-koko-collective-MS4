@@ -13,7 +13,7 @@ class Wishlist(models.Model):
     def __str__(self):
         return self.user.username
 
-
+# Creates a wishlist for new users
 @receiver(post_save, sender=User)
 def create_or_update_the_Wishlist(sender, instance, created, **kwargs):
     ''' creates the user profile or updates it if there is one already '''

@@ -20,7 +20,7 @@
             <hr>
         </div>
     </div>
-
+    <!-- Bag layout for mobile devices -->
     <div class="row">
         <div class="col">
             {% if bag_items %}
@@ -64,6 +64,7 @@
                     </a>
                 </div>
             </div>
+            <!-- Bag layout for larger devices -->
             <div class="table-responsive rounded d-none d-md-block">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
@@ -75,7 +76,7 @@
                             <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
-
+                    <!-- Renders out bag item data -->
                     {% for item in bag_items %}
                     <tr>
                         <td class="p-3 w-25">
@@ -107,6 +108,7 @@
                     </tr>
                 </table>
             </div>
+            <!-- Displays only when the bag is empty -->
             {% else %}
             <p class="lead mb-5">Your bag is empty.</p>
             <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">

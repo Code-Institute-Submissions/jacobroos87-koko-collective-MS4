@@ -45,6 +45,7 @@
 
 <body>
     <div id="page-container">
+        <!-- Page Header -->
         <header class="container-fluid fixed-top bg-white">
             <div class="row">
                 <div class="col delivery-banner">
@@ -59,6 +60,7 @@
                         <img id="logo-img" src="{{ MEDIA_URL }}logo.png" alt="KOKO Collective Logo">
                     </a>
                 </div>
+                <!-- Navbar -->
                 <div class="col-3 offset-3 offset-md-0 col-md-4 my-auto order-md-1 order-sm-3">
                     <div id="menuArea">
                         <input type="checkbox" id="menuToggle"></input>
@@ -191,7 +193,7 @@
         </header>
 
 
-
+        <!-- Setup for django messages -->
         {% if messages %}
         <div class="message-container">
             {% for message in messages %}

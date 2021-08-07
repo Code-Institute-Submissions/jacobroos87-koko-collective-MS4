@@ -24,6 +24,128 @@
 
 # Manual Testing
 
+## Navbar 
+
+* Verify navbar button displays on all devices - ✅ 
+* Verify animations functions on all devices - ✅ 
+* Check all the navigation links direct to the appropriate pages - ✅ 
+* Ensure my account links change once logged in - ✅ 
+* Ensure "Product Management" link is only available for admin users - ✅ 
+* Verify that the header is fixed on all devices -  ✅ 
+* Verify the header items reorder for smaller devices - ✅ 
+
+## Footer
+
+* Verify the footer displays on all devices and is fixed to the bottom - ✅ 
+* Verify the social icons display on all devices - ✅ 
+* Check that all social links redirect to their respective urls - ✅ 
+
+## Home
+
+* Verify the page loads responsively on all devices - ✅ 
+* Verify all the buttons link to their relevant pages - ✅ 
+* Verify the testimonial carousel works on all devices - ✅ 
+* Verify all relevant text is responsive - ✅ 
+* Verify that only products with is_featured set to True are loaded in the featured section - ✅ 
+![New Collection Section](documentation/images/is-featured.png)
+![Is Featured Admin](documentation/images/is-featured-admin.png)
+
+## Products
+* Verify the page loads responsively on all devices - ✅
+* Verify the searchbox and sort boxes load - ✅
+* Verify all products display for All Products link - ✅
+* Verify only dog collars display for Dog Collars link - ✅
+* Verify only dog leads displau for Dog Leads link - ✅
+* Verify only waste bag dispensers display for Waste Bag Dispensers link - ✅
+* Verify Searching by name - ✅
+* Verify Searching by description - ❌ 
+![Description Searching Error](documentation/images/searching-error.png)
+* Verify sorting by name - ✅
+* Verify sorting by catergory - ✅
+* Verify sorting by price - ✅
+* Verify image navigation to product detail - ✅
+
+## Product Detail
+* Verify the page loads responsively on all devices - ✅
+* Verify all the product images are preset - ✅
+* Verify the Quantify and Size selectors work - ✅
+* Verify the Keep Shopping and Add to Bag buttons work - ✅
+* Verify the reviews for the item are displayed below - ✅
+* Verify the average rating and amount of reviews display - ✅
+* Verify the Edit, Delete buttons display for the admin user - ✅
+![Edit & Delete Buttons](documentation/images/edit-delete-admin.png)
+* Verify the wishlist icon displays when a user is logged in (see above) - ✅
+* Verify the item is added to the wishlist upon clicking the heart button - ✅
+* Verify the info alert when an item is added to the wishlist - ✅
+![Add to Wishlist](documentation/images/add-to-wishlist.png)
+* Verify the item is removed from the wishlist if clicked again - ✅
+![Remove From Wishlist](documentation/images/remove-from-wishlist.png)
+* Verify item is added to bag when clicking the "Add To Bag" button - ✅
+![Add To Bag](documentation/images/add-to-bag.png)
+* Verify edit button navigated to edit product page - ✅
+* Verify delete button activates model check - ✅
+![Delete Modal](documentation/images/delete-modal.png)
+* Verify Review Item button activates model with form - ✅
+* Verify edit and delete buttons only display on user specific review - ✅
+* Verify edit button displays prefilled form in modal - ✅
+![Edit Review Modal](documentation/images/edit-review-modal.png)
+
+## Profile
+* Verify profile page loads responsively on all devices - ✅
+* Verify Delivery information is show for registered user - ✅
+* Verify Order History is populated with previous orders and all information is correct - ✅
+![Order History](documentation/images/order-history.png)
+* Verify delivery information updates when changed and saved - ✅
+* Verify order number links to past order with notification - ✅
+
+## Wishlist
+* Verify Wishlist page loads responsively on all devices - ✅
+* Verify product information is correct - ✅
+* Verify Size and Quantity inputs work correctly - ✅
+* Verify Trash Icon removes item from wishlist - ✅
+* Verify Bag Icon adds item to shopping list - ✅
+* Verify Clear Wishlist works as expected - ✅
+
+## About
+* Verify About page loads responsively on all devices - ✅
+* Verify Images are displayed correctly - ✅
+* Verify second row re-orders for smaller devices - ✅
+* Verify both buttons at the bottom link to assigned urls - ✅
+
+## Shopping Bag
+* Verify Shopping Bag page loads responsively on all devices - ✅
+* Verify Product images are displayed correctly - ✅
+* Verify Product information is correct - ✅
+* Verify all totals are adding correctly - ✅
+![Bag Totals](documentation/images/bag-totals.png)
+* Verify items quantities can be updated - ✅
+* Verify items can be removed - ✅
+* Verify buttons navigate to appropriate urls - ✅
+
+## Checkout
+* Verify checkout page loads responsively on all devices - ✅
+* Verify Delivery information and email are prefilled for active user - ✅
+* Verify Order summary is correct and totals are calculated - ✅
+![Order Summary](documentation/images/order-summary.png)
+* Verify Payment input works correctly - ✅
+* Verify Payment input displays error message - ✅
+![Payment Input Error](documentation/images/payment-input-error.png)
+* Verify Adjust Bag button redirect to bag - ✅
+* Verify user directed to Checkout Success on completing order - ✅
+
+## Checkout Success
+* Verify Checkout Success page loads responsively - ✅
+* Verify Order information is correct - ✅
+* Verify Order Success message - ✅
+![Order Success](documentation/images/order-success.png)
+* Verify Bag clears - ✅
+* Verify Order is added to profile - ✅
+
+## Transaction
+* Verify payment success on Stripe - ✅
+![Payment Success](documentation/images/payment-success.png)
+
+
 # Devtools
 
 Chrome Devtools was used during the development process and used extensively for testing. All devices were checked for functionality and visual errors. It was also used to target certain elements of the site to check changes before adding them to the code.

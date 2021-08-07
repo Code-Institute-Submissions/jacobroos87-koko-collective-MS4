@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:1 %}
-                <div class="col-12 d-sm-none d-md-none mb-5">
+                <div class="col-12 d-sm-none mb-5">
                     <hr>
                 </div>
                 {% endif %}
@@ -160,7 +160,12 @@
                 </div>
                 {% endif %}
                 {% if forloop.counter|divisibleby:3 %}
-                <div class="col-12 d-none d-md-block d-lg-block d-xl-none mb-5">
+                <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                    <hr>
+                </div>
+                {% endif %}
+                {% if forloop.counter|divisibleby:1 %}
+                <div class="col-12 d-none d-xl-block mb-5">
                     <hr>
                 </div>
                 {% endif %}

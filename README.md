@@ -107,6 +107,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 * Users might also want to create a profile that saves delivery information and order history.
 * Users might also want leave reviews on products they've purchased to help support the brand and it's ethos.
 
+[Back to top](#table-of-contents)
 ## User Stories
 <hr>
 
@@ -165,6 +166,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 30| Store Owner | Edit and update a product | Change product prices, descriptions, images etc. |
 31| Store Owner | Delete a product | Remove items that are no longer for sale |
 
+[Back to top](#table-of-contents)
 # Structure
 
 ### Page Structure
@@ -207,6 +209,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
         * Logout
         * Shopping Bag (Bag Icon)
 
+[Back to top](#table-of-contents)
 ## Page Summaries
 <hr>
 
@@ -263,7 +266,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 * The authentication pages (login, logout, register etc.) are all templates provided by allauth and have been styled to suite the theme of the overall site.
 
-
+[Back to top](#table-of-contents)
 ## Django Apps and Packages
 <hr>
 
@@ -283,8 +286,71 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 ## Database Design and Structure
 
+### The database structure consists of 8 models across 7 apps
+### The apps with database information are listed below.
 
+* Products App
+    * This app contains 3 models to handle product information, categories and images:
+```bash
+class Product(models.Model):
+    category = models.ForeignKey('Category', null=True, blank=True,
+                                 on_delete=models.SET_NULL)
+    sku = models.CharField(max_length=254, null=True, blank=True)
+    name = models.CharField(max_length=254)
+    description = models.TextField()
+    has_sizes = models.BooleanField(default=False, null=True, blank=True)
+    price = models.DecimalField(max_digits=12, decimal_places=2)
+    avg_rating = models.DecimalField('average rating', max_digits=2,
+                                     decimal_places=1, default=0,
+                                     null=True, blank=True)
+    is_featured = models.BooleanField(default=False, null=True, blank=True)
+    main_image = models.ImageField(null=True, blank=True)
+```
+``` bash
+    class Category(models.Model):
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    name = models.CharField(max_length=254)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+```
+``` bash
+    class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='images')
+    extra_images = models.ImageField(null=True, blank=True)
+```
+* Profiles App
+    * This app has one model to handle user information including delivery details:
+``` bash
+    class UserProfile(models.Model):
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_phone_number = models.CharField(max_length=20, null=True, blank=True)
+    default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
+    default_street_address2 = models.CharField(max_length=80, null=True, blank=True)
+    default_town_or_city = models.CharField(max_length=40, null=True, blank=True)
+    default_county = models.CharField(max_length=80, null=True, blank=True)
+    default_postcode = models.CharField(max_length=20, null=True, blank=True)
+    default_country = CountryField(blank_label='Country', null=True, blank=True)
+```
+* Reviews App
+    * This app has one model to handle review information including fields for datetime information and uses a set of values within the RATE variable which is passed to the rating field:
+``` bash
+    class Reviews(models.Model):
+    
+    RATE = [(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')]
+
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    description = models.TextField()
+    rating = models.IntegerField(choices=RATE)
+    date_posted = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now_add=True)
+```
+[Back to top](#table-of-contents)
 # Surface
 
 ## Colours
@@ -305,7 +371,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 * Sans Serif as default backup.
 
 # Skeleton
-
+[Back to top](#table-of-contents)
 ## Wireframes
 * Wireframes were designed using Figma
     * ### [Figma Wireframes](https://www.figma.com/file/CpbipeI8HyGvvo1unTKUb3/KOKO-COLLECTIVE?node-id=0%3A1)
@@ -335,7 +401,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 ## Wishlist
 ![Wishlist Page](documentation/images/koko-wishlist.jpg)
 <hr>
-
+[Back to top](#table-of-contents)
 ## Wireframe and Final Project Differences
 <hr>
 
@@ -353,7 +419,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
     * The user profile page is once again very similar but has more detailed information in the order history section. Including the date and time the order was made and the items by name (including size and quantity.
 * ### Wishlist
     * The Wishlist page is very similar however the extra product information is also displayed next to the product image including the name, rating and SKU values.
-
+[Back to top](#table-of-contents)
 ## Responsive Page Design
 <hr>
 
@@ -414,7 +480,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
     * The layout of the footer remains the same for all devices, with all the social icons and copyright centered.
 
-
+[Back to top](#table-of-contents)
 # Features
 
 ## Sitewide
@@ -491,6 +557,7 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 8. Adding sign-up functionality that offers discounts for new subscriptions
 9. Potentially adding a wholesale section.
 
+[Back to top](#table-of-contents)
 # Technologies Used
 
 ## Languages
@@ -537,7 +604,8 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 
 ## All testing has been documented in [TESTING.md](TESTING.md)
 
-# Deployment
+[Back to top](#table-of-contents)
+# Deployment 
 
 ## Gitpod
 * The site was developed in GitPod and pushed to the following GitHub repository -- [REPO](https://github.com/jacobroos87/koko-collective-MS4) --

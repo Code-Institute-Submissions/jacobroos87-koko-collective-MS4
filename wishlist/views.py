@@ -10,6 +10,7 @@ from products.models import Product
 def view_wishlist(request):
     return render(request, 'wishlist/wishlist.html')
 
+
 @login_required
 def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -23,6 +24,7 @@ def add_to_wishlist(request, product_id):
         messages.error(request,
                        "Error, you already have this item in your wishlist!")
     return redirect(reverse("product_detail", args=[product_id]))
+
 
 @login_required
 def remove_wishlist_item(request, product_id):
@@ -41,6 +43,7 @@ def remove_wishlist_item(request, product_id):
         return redirect(reverse("view_wishlist"))
     else:
         return redirect(reverse("product_detail", args=[product_id]))
+
 
 @login_required
 def clear_wishlist(request):

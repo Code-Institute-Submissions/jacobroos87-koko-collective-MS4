@@ -44,6 +44,7 @@
 * Verify all the buttons link to their relevant pages - ✅ 
 * Verify the testimonial carousel works on all devices - ✅ 
 * Verify all relevant text is responsive - ✅ 
+* Verify Images are responsive for all devices - ❌
 * Verify that only products with is_featured set to True are loaded in the featured section - ✅ 
 
 ![New Collection Section](documentation/images/is-featured.png)
@@ -178,6 +179,13 @@
 ``` bash
 | Q(description__icontains=query)
 ```
+
+* Verify Images are responsive on the Homepage - ❌
+
+![Home Page Image Error](documentation/images/homepage-error.png)
+
+### This error for some reason appeared after deploying and I wasn't able to fix it.  It only has this error for medium sized devices. I attempted to change the loops for the Horizontal Rules and adjusted the Bootstrap classes but to no avail...
+
 # Devtools
 
 Chrome Devtools was used during the development process and used extensively for testing. All devices were checked for functionality and visual errors. It was also used to target certain elements of the site to check changes before adding them to the code.

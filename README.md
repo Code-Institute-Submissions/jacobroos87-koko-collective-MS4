@@ -143,8 +143,8 @@ Koko Collective is a pet accessories brand selling Dog Collars, Leads, Bandanas 
 ### Sorting and Searching
 | ID | As a... | I want to be able to... | So that I can... |
 |----|:--------|:------------------------|:-----------------|
-18| Shopper | Sort the list of available products | Easily find the products I want, by price, category or rating |
-19| Shopper | Sort a specific category of products | Find the best priced or rated products in a specific category or sort them by name |
+18| Shopper | Sort the list of available products | Easily find the products I want, by name, price or category |
+19| Shopper | Sort a specific category of products | Find the best priced products in a specific category or sort them by name |
 20| Shopper | Search for a product by name or description | Find a specific product I'd like to purchase |
 21| Shopper | Easily see my search query and the number of results | To quickly be able to decide if the product I want is available |
 
